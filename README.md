@@ -105,7 +105,7 @@ If you are the site owner and want changes live immediately, push to the `main` 
 
 - Email: fiozxrrahman@duck.com  
 - GitHub: https://github.com/fiozxr  
-- Instagram: ![fiozxr_](https://instagram.com/@fiozxr_)
+- Instagram: [fiozxr_](https://instagram.com/@fiozxr_)
 
 ---
 
