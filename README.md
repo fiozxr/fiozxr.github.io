@@ -101,20 +101,11 @@ Suggested workflow:
 
 If you are the site owner and want changes live immediately, push to the `main` branch of this repository (this repo is configured as a user GitHub Pages site: fiozxr.github.io).
 
----
-
-## Deployment
-
-This repository is a GitHub Pages user site. To publish changes:
-- Push commits to the default branch (usually `main`) of this repository — GitHub Pages will serve the site at https://fiozxr.github.io/.
-
----
-
-## Contact
+---httpsContact
 
 - Email: fiozxrrahman@duck.com  
 - GitHub: https://github.com/fiozxr  
-- Location: Assam, India
+- Instagram: ![fiozxr_](https://instagram.com/@fiozxr_)
 
 ---
 
