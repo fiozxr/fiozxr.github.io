@@ -1,4 +1,4 @@
-# 🛡️ Fiozxr Rahman - Cybersecurity Portfolio
+# 🛡️ Fiozxr Rahman - Portfolio
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Focus](https://img.shields.io/badge/Focus-Cybersecurity-blue)
@@ -52,11 +52,11 @@ This repository highlights the following security tools I have developed:
 
 ## ⚙️ Installation & Setup
 
-To run this portfolio locally:
+To Download this portfolio locally:
 
 1.  **Clone the repo:**
     ```bash
-    git clone [https://github.com/fiozxr/portfolio.git](https://github.com/fiozxr/portfolio.git)
+    git clone https://github.com/fiozxr.github.io
     ```
 2.  **Verify Files:** Ensure `index.html`, `styles.css`, and an `images/` folder containing `pfp.jpg` are present.
 3.  **Run:** Open `index.html` in your browser.
