@@ -1,112 +1,93 @@
-# FIOZXR RAHMAN — Portfolio
+# 🛡️ Fiozxr Rahman - Cybersecurity Portfolio
 
-A lightweight, responsive personal portfolio and cybersecurity showcase built with plain HTML, CSS and JavaScript.
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Focus](https://img.shields.io/badge/Focus-Cybersecurity-blue)
+![Backend](https://img.shields.io/badge/Backend-Supabase-green)
 
-This repository contains the static site source for fiozxr.github.io. The site highlights Fiozxr Rahman's background, technical skills, featured projects, and contact details.
+Welcome to the official repository for my personal portfolio website. This project serves as a central hub to showcase my journey as a cybersecurity student, my technical skill set, and the security tools I have developed.
 
----
+## 📖 About Me
 
-## Table of contents
+I am Fiozxr Rahman, a driven Cybersecurity student with a keen interest in network security, ethical hacking, and defending against cyber threats.
 
-- [About the site](#about-the-site)  
-- [Features](#features)  
-- [Projects (featured)](#projects-featured)  
-- [Technologies](#technologies)  
-- [Preview locally](#preview-locally)  
-- [Edit & contribute](#edit--contribute)  
-- [Deployment](#deployment)  
-- [Contact](#contact)  
+While I do not come from a traditional computer science academic background, I have cultivated strong practical experience in understanding complex systems and building defenses. My goal is to collaborate with fellow enthusiasts and expand my knowledge in securing digital infrastructure.
 
----
+## 💻 Tech Stack & Skills
 
-## About the site
+This portfolio is built as a lightweight, static website enhanced with cloud services.
 
-This is a single-page portfolio that presents:
-- A hero section with name, title and animated typing effect
-- An "About" section with short bio and quick stats
-- A "Skills" section showing technical proficiencies
-- A "Projects" section showcasing featured work with external links
-- A contact section with email, location and a contact form
+### Website Architecture
+* **Frontend:** HTML5, CSS3, and Vanilla JavaScript.
+* **Styling:** Custom CSS (`styles.css`) with responsive design for mobile and desktop.
+* **Fonts:** Montserrat and Roboto Mono via Google Fonts.
+* **Icons:** FontAwesome (v6.0.0).
+* **Backend:** **Supabase** (via CDN) is used to handle contact form submissions without a server.
 
-The content and links reflect a focus on cybersecurity, web development and penetration testing.
-
----
-
-## Features
-
-- Clean, responsive layout with navigation anchors (Home, About, Skills, Projects, Contact)
-- Simple animated UI elements (typing cursor, progress bars)
-- Projects list with external links (live sites / GitHub)
-- Contact form markup (client-side only; no backend included)
-- Uses Google Fonts and Font Awesome for icons
+### My Technical Skills
+* **Network Security:** Protocols, firewalls, IDS/IPS, and VPNs.
+* **Programming:** Python, C++, and Bash scripting.
+* **Ethical Hacking:** Penetration testing and vulnerability assessment.
+* **OS & Systems:** Linux/Unix, Windows Server, and Virtualization.
+* **Cloud Security:** Basic knowledge of AWS/Azure best practices.
 
 ---
 
-## Projects (featured)
+## 📂 Featured Projects
 
-- Cybersecurity Courses Platform — responsive educational platform  
-  Live: http://opencourses.free.nf
+This repository highlights the following security tools I have developed:
 
-- Free Fire Tournament Website — tournament management site, GitHub mirror  
-  Live: http://assamfirestorm.gamer.gd  
-  Repo: https://github.com/emptySec-org/Assamfirestorm
+### 1. [ScannXR](https://github.com/fiozxr/ScannXR)
+* **Description:** A simple network scanner that identifies active hosts and open ports on a local network.
+* **Tech Stack:** Python, Scapy, Networking.
 
-- E-commerce Security Implementation — secure payment and hardening work  
-  Live: http://nayna.great-site.net
+### 2. [XRaptor](https://github.com/fiozxr/XRaptor)
+* **Description:** A brute-force detector script that monitors log files for repeated failed login attempts and blocks suspicious IPs.
+* **Tech Stack:** Bash, Linux, Security Scripting.
 
----
-
-## Technologies
-
-- HTML5
-- CSS3 (styles in css/style.css)
-- JavaScript (js/app.js)
-- Google Fonts (Poppins)
-- Font Awesome icons
-
-No build tools or package manager are required — this is a static site.
+### 3. [Web Vulnerability Scanner (POC)](https://github.com/fiozxr/project-3)
+* **Description:** A Proof-of-Concept tool designed to identify basic web vulnerabilities such as XSS and SQL Injection.
+* **Tech Stack:** Python, Requests, Web Security.
 
 ---
 
-## Preview locally
+## ⚙️ Installation & Setup
 
-1. Clone the repo:
-   git clone https://github.com/fiozxr/fiozxr.github.io.git
+To run this portfolio locally:
 
-2. Open locally:
-   - Option A — open the file directly in your browser:
-     Open `index.html` in your browser.
-   - Option B — serve with a simple HTTP server (recommended):
-     - Python 3:
-       python -m http.server 4000
-       Visit http://localhost:4000
-     - Node (if you prefer a dev server, install one like `serve`):
-       npx serve .
-
-3. Make changes to files in the repository (HTML/CSS/JS), refresh the browser to see updates.
+1.  **Clone the repo:**
+    ```bash
+    git clone [https://github.com/fiozxr/portfolio.git](https://github.com/fiozxr/portfolio.git)
+    ```
+2.  **Verify Files:** Ensure `index.html`, `styles.css`, and an `images/` folder containing `pfp.jpg` are present.
+3.  **Run:** Open `index.html` in your browser.
 
 ---
 
-## Edit & contribute
+## 🗄️ Database Configuration (Supabase)
 
-Suggested workflow:
-- Create a feature branch:
-  git checkout -b my-changes
-- Edit files (use your editor of choice)
-- Stage and commit:
-  git add .
-  git commit -m "Describe changes"
-- Push and open a pull request:
-  git push -u origin my-changes
+The contact form is powered by **Supabase**. The JavaScript logic in `index.html` sends data to a remote database.
 
-If you are the site owner and want changes live immediately, push to the `main` branch of this repository (this repo is configured as a user GitHub Pages site: fiozxr.github.io).
+If you are setting this up for yourself, you must configure your database table to match the code's expectation:
 
----httpsContact
+1.  **Create a Table:** The table must be named `messages`.
+2.  **Schema:** The table requires the following columns to accept the form data:
+    * `name` (Text)
+    * `email` (Text)
+    * `message` (Text)
+    * *Note: `id` and `created_at` usually default in Supabase.*
+3.  **Client Logic:** The script initializes the client using the specific URL and Key found in the footer script of `index.html`.
 
-- Email: fiozxrrahman@duck.com  
-- GitHub: https://github.com/fiozxr  
-- Instagram: [fiozxr_](https://instagram.com/@fiozxr_)
+> **Security Note:** As a cybersecurity student, I am aware that the API key is exposed in the frontend. In a production environment, Row Level Security (RLS) policies are enforced on the Supabase table to ensure that public users can only **INSERT** messages, while only authenticated administrators can **READ** them.
 
 ---
 
-Thank you for visiting the code for this portfolio site — feel free to open issues or pull requests with improvements.
+## 📬 Contact Information
+
+Feel free to reach out for collaborations or opportunities!
+
+* **Email:** [fiozxrrahman@duck.com](mailto:fiozxrrahman@duck.com)
+* **GitHub:** [fiozxr](https://github.com/fiozxr)
+* **Instagram:** [@fiozxr_](https://instagram.com/fiozxr_)
+
+---
+&copy; 2023 Fiozxr Rahman. No rights reserved.
