@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FIOZXR RAHMAN - portfolio</title>
+<style>
+  :root{
+    --bg-1:#071026;
+    --bg-2:#001026;
+    --glass-1: rgba(255,255,255,0.06);
+    --glass-2: rgba(255,255,255,0.04);
+    --accent-1: #7dd3fc; /* cyan */
+    --accent-2: #a78bfa; /* purple */
+    --muted: #9aa7b2;
+    --card-border: rgba(255,255,255,0.06);
+    --glass-blur: 10px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(120,95,255,0.06), transparent 10%),
+                radial-gradient(900px 500px at 90% 90%, rgba(38,204,255,0.04), transparent 8%),
+                linear-gradient(180deg,var(--bg-1),var(--bg-2));
+    color:#e6eef5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+    cursor: none; /* hide default cursor to use custom one */
+  }
+
+  /* Layout */
+  .wrap{max-width:1200px;margin:48px auto;padding:28px;position:relative;z-index:2}
+  header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent-1));
+    color:#021026;font-weight:700;box-shadow:0 6px 20px rgba(7,16,38,0.55);
+  }
+  .brand-text{line-height:1}
+  .brand-text .name{font-size:18px;font-weight:700}
+  .brand-text .role{font-size:12px;color:var(--muted);margin-top:2px}
+
+  nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+  nav a:hover{color:var(--accent-1)}
+
+  /* Hero grid with new structure: left stack + right columns */
+  .hero{display:grid;grid-template-columns: 1fr 420px;gap:28px;margin-top:36px;align-items:center}
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr; padding:0 18px}
+    .wrap{padding:18px}
+  }
+
+  /* Glass card base */
+  .glass{
+    background: linear-gradient(180deg,var(--glass-1),var(--glass-2));
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  }
+
+  /* Intro left */
+  .intro{
+    padding:28px;
+    display:flex;flex-direction:column;gap:18px;overflow:visible;
+    transform-style:preserve-3d;
+  }
+  .intro h1{font-size:40px;line-height:1.02;letter-spacing:-0.6px}
+  .intro h1 .grad{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .intro p{color:var(--muted);max-width:70%}
+  .cta-row{display:flex;gap:12px;margin-top:6px}
+  .btn{
+    padding:10px 16px;border-radius:12px;font-weight:600;border:none;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#021026;
+    box-shadow:0 6px 18px rgba(121,67,255,0.12);cursor:pointer;transform:translateZ(0);
+  }
+  .btn.secondary{
+    background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)
+  }
+
+  .brand-photo{
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+  
+  /* small stat chips */
+  .chips{display:flex;gap:10px;margin-top:12px}
+  .chip{padding:10px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+  /* Right column: stacked cards with depth parallax */
+  .right-col{display:flex;flex-direction:column;gap:16px;align-items:stretch}
+  .profile-card{padding:20px;border-radius:14px;display:flex;gap:14px;align-items:center}
+  .avatar{
+    width:96px;height:96px;border-radius:14px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,0.06);
+    background:linear-gradient(135deg,var(--accent-2),var(--accent-1));
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:#021026;font-size:28px;
+    transform:translateZ(40px);
+  }
+  .profile-body .title{font-weight:700}
+  .profile-body .sub{color:var(--muted);font-size:13px;margin-top:4px}
+
+  /* Sections */
+  section{margin-top:28px}
+  .section-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .section-head h3{font-size:20px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  @media(max-width:980px){ .grid-3{grid-template-columns:repeat(1,1fr)} }
+
+  /* Skill card style */
+  .skill-card{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03)}
+  .skill-title{font-weight:700;margin-bottom:8px}
+  .skill-tech{color:var(--muted);font-size:13px}
+
+  /* Projects list */
+  .project{padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+  .project .meta{font-size:13px;color:var(--muted);margin-top:10px}
+  .badges{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+  .badge{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);font-size:12px;color:var(--muted)}
+
+  /* Fancy footer */
+  footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;padding:20px 0}
+
+  /* Decorative / animated background elements (blobs) */
+  .blob{
+    position:fixed;pointer-events:none;z-index:0;mix-blend-mode:screen;filter:blur(60px);opacity:0.6;
+  }
+  .blob.b1{width:540px;height:360px;left:-120px;top:-90px;background:linear-gradient(135deg,#7dd3fc,#a78bfa)}
+  .blob.b2{width:420px;height:280px;right:-100px;bottom:-80px;background:linear-gradient(135deg,#34d399,#60a5fa)}
+
+  /* Cursor */
+  .cursor{
+    position:fixed;left:0;top:0;width:22px;height:22px;border-radius:50%;transform:translate(-50%,-50%);
+    background:linear-gradient(180deg,var(--accent-2),var(--accent-1));box-shadow:0 8px 20px rgba(0,0,0,0.45);
+    pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform 120ms ease, width 160ms ease, height 160ms ease, opacity 160ms
+  }
+  .cursor.small{width:10px;height:10px;opacity:0.9}
+  .cursor.big{width:56px;height:56px;opacity:0.95;border-radius:12px;backdrop-filter:blur(4px);}
+
+  /* Reveal & motion helpers */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.9,.2,1)}
+  .reveal.show{opacity:1;transform:none}
+
+  /* subtle floating for cards */
+  .float{transition:transform .35s cubic-bezier(.2,.9,.2,1)}
+  .float:hover{transform:translateY(-8px) rotateX(3deg) scale(1.02)}
+
+  /* Form UI tweaks */
+  form input, form textarea {
+    padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;
+    outline:none;
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .full { grid-column: 1 / -1; }
+
+  /* spinner & toast */
+  .spinner {
+    width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,0.12);border-top-color:var(--accent-1);
+    animation: spin 900ms linear infinite; display:inline-block; vertical-align:middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toast {
+    position:fixed; right:18px; bottom:18px; background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    color:#021026; padding:12px 16px; border-radius:10px; font-weight:700; box-shadow:0 10px 30px rgba(2,6,23,0.6);
+    display:none; z-index:99999;
+  }
+  .toast.show { display:block; animation: toastIn .35s ease; }
+  @keyframes toastIn { from { transform: translateY(10px); opacity:0 } to { transform:none; opacity:1 } }
+
+  /* small hint for hidden honeypot */
+  .hp { display:none; }
+</style>
+</head>
+<body>
+
+<!-- decorative blobs -->
+<div class="blob b1" aria-hidden="true"></div>
+<div class="blob b2" aria-hidden="true"></div>
+
+<!-- custom cursor element -->
+<div id="cursor" class="cursor"></div>
+
+<div class="wrap">
+  
+  <header>
+    <div class="brand">
+      <img src="imgs/FX.jpg" class="brand-photo" alt="FX">
+      <div class="brand-text">
+        <div class="name">Fiozxr Rahman</div>
+        <div class="role">Cybersecurity Student</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#skills">Technical Skills</a>
+      <a href="#projects">Featured Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+
+    <!-- LEFT: Intro + skills preview -->
+    <div class="glass intro float" id="introCard">
+      <h1>Hi, I’m <span class="grad">FIOZXR</span> — building secure systems & exploring the unknown</h1>
+      <p>Cybersecurity student focused on network security, penetration testing and web security. I build tools, course platforms and secure solutions.</p>
+
+      <div class="chips">
+        <div class="chip">Free to exploit</div>
+        <div class="chip">6+ Featured Projects</div>
+        <div class="chip">Courses Creator</div>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn" id="viewProjectsBtn">View Projects</button>
+
+         <a id="downloadBtn"
+           href="/cv/fiozxr-cv.pdf"
+           download="Fiozxr_Rahman_CV.pdf"
+           class="btn secondary">
+           Download CV
+        </a>
+      </div>
+
+      <!-- quick skill mini-grid -->
+      <div style="margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px;">
+        <div class="skill-card reveal" style="transition-delay:.08s">
+          <div class="skill-title">Network Security</div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.16s">
+          <div class="skill-title">Ethical Hacking</div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.24s">
+          <div class="skill-title">Web Penetration</div>
+        </div>
+        <div class="skill-card reveal" style="transition-delay:.32s">
+          <div class="skill-title">Linux Fundamentals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: profile and contact stacked cards -->
+    <div class="right-col">
+      <div class="glass profile-card float" id="profileCard" style="transform-origin:center;">
+       <div class="avatar" id="avatarEl">
+          <img src="imgs/avatar.jpg" alt="avatar" id="avatarImg" style="width:100%;height:100%;object-fit:cover;display:block">
+           </div>
+
+        <div class="profile-body">
+          <div class="title">Fiozxr Rahman</div>
+          <div class="sub">Cybersecurity Student • Web Pen-testing • Device System</div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px;max-width:220px">
+            I create educational platforms, security tooling and practical learning resources — focused on real-world defensive & offensive skills.
+          </div>
+        </div>
+      </div>
+
+      <div class="glass float" style="padding:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Quick Contact</div>
+          <div style="color:var(--muted);font-size:13px">Available</div>
+        </div>
+        <div style="margin-top:12px;color:var(--muted);font-size:14px">Email: <b id="contactEmail">fiozxrrahman@duck.com</b></div>
+        <div style="margin-top:10px;">
+          <a href="https://github.com/fiozxr" target="_blank" style="color:var(--accent-1);text-decoration:none;margin-right:10px">GitHub</a>
+          <a href="https://instagram.com/fiozxr_" target="_blank" style="color:var(--accent-2);text-decoration:none">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TECHNICAL SKILLS -->
+  <section id="skills" class="glass" style="padding:20px;">
+    <div class="section-head">
+      <h3>Technical Skills</h3>
+      <div style="color:var(--muted);font-size:13px">Practical & hands-on</div>
+    </div>
+
+    <div class="grid-3" style="margin-top:16px;">
+      <div class="skill-card reveal"><div class="skill-title">Linux fundamentals</div><div class="skill-tech">Command line, Shell, System administration</div></div>
+      <div class="skill-card reveal"><div class="skill-title">Web penetration</div><div class="skill-tech">XSS, SQLi, auth bypass, browser security</div></div>
+      <div class="skill-card reveal"><div class="skill-title">Cybersecurity</div><div class="skill-tech">Risk assessment, secure design</div></div>
+
+      <div class="skill-card reveal"><div class="skill-title">Network Security</div><div class="skill-tech">Firewalls, IDS/IPS, routing & VPN</div></div>
+      <div class="skill-card reveal"><div class="skill-title">Ethical Hacking</div><div class="skill-tech">Recon, priv esc, reporting</div></div>
+      <div class="skill-card reveal"><div class="skill-title">Penetration Testing</div><div class="skill-tech">Full-scope pentests & methodology</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section id="projects" class="glass" style="padding:20px;">
+    <div class="section-head">
+      <h3>Featured Projects</h3>
+      <div style="color:var(--muted);font-size:13px">Selected work</div>
+    </div>
+
+    <div class="grid-3" style="margin-top:16px;">
+      <article class="project reveal">
+        <div style="font-weight:700">Cybersecurity Courses Platform</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:14px">
+          Built a comprehensive platform for cybersecurity courses and educational resources with responsive design.
+        </div>
+        <div class="badges">
+          <a href="https://opencources.free.nf" target="_blank" style="color:var(--accent-1);text-decoration:none;margin-right:10px">view project</a>
+          <span class="badge">HTML</span>
+          <span class="badge">CSS</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">Security Protocols</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div style="font-weight:700">Free Fire Tournament Website</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:14px">
+          Developed a tournament management website with cross-device compatibility and real-time updates.
+        </div>
+        <div class="badges">
+          <a href="https://assamfirestorm.gamer.gd" target="_blank" style="color:var(--accent-1);text-decoration:none;margin-right:10px">view project</a>
+          <span class="badge">HTML</span>
+          <span class="badge">CSS</span>
+          <span class="badge">JavaScript</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div style="font-weight:700">E-commerce Security Implementation</div>
+        <div style="margin-top:8px;color:var(--muted);font-size:14px">
+          Implemented security measures for wholesale business website including secure payment processing.
+        </div>
+        <div class="badges">
+          <a href="https://nayna.great-site.net" target="_blank" style="color:var(--accent-1);text-decoration:none;margin-right:10px">view project</a>
+          <span class="badge">PHP</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">Security Protocols</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="glass" style="padding:20px;margin-top:22px;">
+    <div class="section-head">
+      <h3>Contact</h3>
+      <div style="color:var(--muted);font-size:13px">Say hi — let's build</div>
+    </div>
+
+    <!-- Contact form: uses EmailJS -->
+    <form id="contactForm" style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <input name="name" id="inputName" placeholder="Your name" required>
+      <input type="email" name="email" id="inputEmail" placeholder="you@mail.com" required>
+      <textarea name="message" id="inputMessage" placeholder="Write a message..." rows="5" class="full" required></textarea>
+
+      <!-- Honeypot field (spam protection) -->
+      <input type="text" name="phone" class="hp" tabindex="-1" autocomplete="off" />
+
+      <button id="sendBtn" class="btn full" type="submit">
+        <span id="sendLabel">Send Message</span>
+        <span id="sendSpinner" style="display:none;margin-left:8px" class="spinner" aria-hidden="true"></span>
+      </button>
+    </form>
+
+  </section>
+  <footer>© <span id="year"></span> FIOZXR RWHMAN . NO RIGHTS RESERVED.
+  </footer>
+</div>
+
+<!-- toast -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- EmailJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // -------------- Configuration - REPLACE these placeholders --------------
+  // Get these values from your EmailJS dashboard.
+  const EMAILJS_PUBLIC_KEY = "4gym4LoaO31U3HuCh";
+  const EMAILJS_SERVICE_ID = "fiozxr-portfolio";
+  const EMAILJS_TEMPLATE_ID = "template_mxabo1k";
+  // -----------------------------------------------------------------------
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Initialize EmailJS */
+  (function(){
+    if (!emailjs) {
+      console.error("EmailJS SDK not loaded.");
+      toast("EmailJS SDK failed to load.", true);
+      return;
+    }
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  })();
+
+  /* helper: toast */
+  function toast(msg, isError=false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = isError ? 'linear-gradient(90deg,#ff9a9e,#fecfef)' : 'linear-gradient(90deg,var(--accent-1),var(--accent-2))';
+    t.classList.add('show');
+    setTimeout(()=> t.classList.remove('show'), 4200);
+  }
+
+  /* Spinner & button helpers */
+  function setLoading(on){
+    document.getElementById('sendSpinner').style.display = on ? 'inline-block' : 'none';
+    document.getElementById('sendLabel').style.opacity = on ? '0.4' : '1';
+    document.getElementById('sendBtn').disabled = on;
+  }
+
+  /* Anti-abuse: simple cooldown (10s) after send to reduce spam */
+  let lastSentAt = 0;
+  const COOLDOWN_MS = 10000;
+
+  /* Form submit handler */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    // Honeypot field - if filled, treat as bot and silently ignore
+    if (this.phone && this.phone.value.trim() !== "") {
+      // silently drop
+      return;
+    }
+
+    // Simple required checks (HTML required will do most; this is extra)
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const message = this.message.value.trim();
+    if (!name || !email || !message) {
+      toast("Please complete all required fields.", true);
+      return;
+    }
+
+    // cooldown
+    const now = Date.now();
+    if (now - lastSentAt < COOLDOWN_MS) {
+      toast("Please wait a moment before sending again.", true);
+      return;
+    }
+
+    // prepare payload for EmailJS template variables
+    const templateParams = {
+      from_name: name,
+      reply_to: email,
+      message: message,
+      // you can add more template params here (e.g., page_url, timestamp)
+      page_url: window.location.href,
+      sent_at: new Date().toISOString()
+    };
+
+    // UI
+    setLoading(true);
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      .then((resp)=> {
+        lastSentAt = Date.now();
+        setLoading(false);
+        this.reset();
+        toast("Message sent! I'll reply soon.");
+      })
+      .catch((err)=> {
+        setLoading(false);
+        console.error("EmailJS error:", err);
+        toast("Failed to send message. Please try again later.", true);
+      });
+  });
+
+  /* Custom UI (cursor, parallax, reveals) - kept from original */
+  const cursor = document.getElementById('cursor');
+  let mouseX = -100, mouseY = -100, cursorSX = 0, cursorSY = 0;
+  let cursorMode = 'normal';
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    if (cursorMode === 'normal') cursor.classList.add('small');
+  });
+  function tick() {
+    cursorSX += (mouseX - cursorSX) * 0.18;
+    cursorSY += (mouseY - cursorSY) * 0.18;
+    cursor.style.left = cursorSX + 'px';
+    cursor.style.top = cursorSY + 'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+  const interactive = Array.from(document.querySelectorAll('a, button, input, textarea, .project, .btn'));
+  interactive.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.remove('small'); cursor.classList.add('big');
+      el.style.transform = (el.dataset.nohover ? '' : 'translateY(-6px) scale(1.01)');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('big'); cursor.classList.add('small');
+      el.style.transform = '';
+    });
+  });
+  window.addEventListener('touchstart', () => { cursor.style.display = 'none'; document.body.style.cursor = 'auto'; }, {passive:true});
+
+  function setParallax(el, intensity = 12) {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      const rotY = (px - 0.5) * intensity;
+      const rotX = (0.5 - py) * intensity;
+      el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(0)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = 'none'; });
+  }
+  const introCard = document.getElementById('introCard');
+  const profileCard = document.getElementById('profileCard');
+  setParallax(introCard, 6);
+  setParallax(profileCard, 8);
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) en.target.classList.add('show');
+    });
+  }, {threshold:0.12});
+  reveals.forEach(r => obs.observe(r));
+
+  const blobs = document.querySelectorAll('.blob');
+  blobs.forEach((b,i)=>{
+    const s = 2.5 + i*0.8;
+    b.animate([{transform:'translateY(0px)'},{transform:'translateY(18px)'},{transform:'translateY(0px)'}],{duration: 8000*s,iterations:Infinity,easing:'ease-in-out'});
+  });
+
+  const avatarImg = document.getElementById('avatarImg');
+  avatarImg.addEventListener('error', () => {
+    const parent = document.getElementById('avatarEl');
+    parent.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#021026;background:linear-gradient(135deg,var(--accent-2),var(--accent-1));font-size:28px">FZ</div>';
+  });
+
+  document.getElementById('viewProjectsBtn').addEventListener('click', ()=> {
+    document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+  });
+
+  // keyboard accessibility: restore default cursor for keyboard users
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      cursor.style.display = 'none';
+      document.body.style.cursor = 'auto';
+    }
+  });
+
+  window.addEventListener('load', () => {
+    setTimeout(()=>introCard.classList.add('reveal','show'),120);
+    setTimeout(()=>profileCard.classList.add('reveal','show'),220);
+  });
+</script>
+</body>
+</html>
