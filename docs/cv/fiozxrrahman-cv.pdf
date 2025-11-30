@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Undetectable Backdoor | FIOZXR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 1. Variables & Theme --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-panel: rgba(20, 20, 20, 0.6); /* Glassmorphism base */
+            --primary-accent: #00ff88; /* Cyber Green */
+            --secondary-accent: #00b8ff; /* Cyber Blue */
+            --text-main: #e0e0e0;
+            --text-muted: #888;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            --transition-speed: 0.3s;
+        }
+
+        /* --- 2. Global Reset & Base Animations --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            /* Animated Background Grid */
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: bgScroll 20s linear infinite;
+        }
+
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 30px 30px; }
+        }
+
+        /* Slide Up Animation for content loading */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        a { text-decoration: none; transition: var(--transition-speed); }
+
+        /* --- 3. Container & Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- 4. Header & Typing Animation --- */
+        header {
+            padding: 80px 0 40px;
+            text-align: center;
+            animation: slideUpFade 0.8s ease-out forwards;
+        }
+
+        .glitch-wrapper {
+            display: inline-block;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        /* Navigation with glow effect */
+        nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-main);
+            padding: 8px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.3);
+        }
+
+        nav a:hover {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        /* --- 5. Sections & Cards (Glassmorphism) --- */
+        section {
+            margin-bottom: 60px;
+            opacity: 0; /* Hidden by default for animation */
+            animation: slideUpFade 0.8s ease-out forwards;
+        }
+
+        /* Stagger animations for sections */
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.4s; }
+        section:nth-child(3) { animation-delay: 0.6s; }
+        section:nth-child(4) { animation-delay: 0.8s; }
+        section:nth-child(5) { animation-delay: 1.0s; }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-accent);
+            padding-left: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px); /* The Glass Effect */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        /* Subtle shine effect on card hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s;
+        }
+        .card:hover::before { left: 100%; }
+
+        .card h3 { color: var(--primary-accent); margin-bottom: 10px; }
+        .card p { font-size: 0.95rem; color: #ccc; }
+
+        /* --- 6. Code Blocks --- */
+        .code-window {
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .window-bar {
+            background: #222;
+            padding: 8px 15px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            color: #a9b7c6;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        code { color: var(--secondary-accent); }
+        
+        .cmd-copy {
+            float: right;
+            cursor: pointer;
+            color: #666;
+        }
+        .cmd-copy:hover { color: #fff; }
+
+        /* --- 7. Security Warning --- */
+        .warning-box {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            color: #ffca28;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .warning-icon { font-size: 1.5rem; }
+
+        /* --- 8. Footer & Credits --- */
+        footer {
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            position: relative;
+            background: linear-gradient(to top, #000, transparent);
+        }
+
+        .credits-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px 40px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .author-title {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-accent);
+            transform: scale(1.1);
+        }
+        
+        .social-links a::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            background: var(--primary-accent);
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.2s;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        
+        .social-links a:hover::after {
+            opacity: 1;
+            bottom: -40px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="glitch-wrapper">
+                <h1>Secure Undetectable Backdoor</h1>
+            </div>
+            <p class="subtitle">> A stealthy, encrypted tool for authorized research_</p>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#installation">Installation</a>
+                <a href="#usage">Usage</a>
+                <a href="#security">Security</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="features">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="card">
+                        <h3><i class="fas fa-lock"></i> TLS Encryption</h3>
+                        <p>SSL/TLS tunnel wrapping ensures your transport layer is opaque to standard sniffing.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-key"></i> AES-256</h3>
+                        <p>Payloads are doubly encrypted using military-grade AES-256 algorithms.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-shield-virus"></i> Isolation</h3>
+                        <p>Command execution occurs in isolated subprocesses to prevent shell crashes.</p>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-bolt"></i> Auto-Reconnect</h3>
+                        <p>Persistent connection logic retries silently upon network interruption.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="installation">
+                <h2>Installation</h2>
+                <p>Deploy dependencies instantly via pip:</p>
+                <div class="code-window">
+                    <div class="window-bar">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    </div>
+                    <pre><code>pip install pycryptodome</code> <i class="fas fa-copy cmd-copy"></i></pre>
+                </div>
+            </section>
+
+            <section id="usage">
+                <h2>Usage Protocol</h2>
+                
+                <div class="features-grid">
+                    <div class="card">
+                        <h3>1. Backdoor (Victim)</h3>
+                        <p>Deploy on target:</p>
+                        <code style="display:block; margin-top:10px; background:rgba(0,0,0,0.3); padding:5px;">python3 backdoor.py</code>
+                    </div>
+                    <div class="card">
+                        <h3>2. Listener (Server)</h3>
+                        <p>Start listening:</p>
+                        <code style="display:block; margin-top:10px; background:rgba(0,0,0,0.3); padding:5px;">python3 listener.py</code>
+                    </div>
+                    <div class="card">
+                        <h3>3. Controller (Admin)</h3>
+                        <p>Connect and control:</p>
+                        <code style="display:block; margin-top:10px; background:rgba(0,0,0,0.3); padding:5px;">python3 controller.py</code>
+                    </div>
+                </div>
+            </section>
+
+            <section id="configuration">
+                <h2>Configuration</h2>
+                <div class="code-window">
+                    <div class="window-bar">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    </div>
+                    <pre>
+# Edit in script variables:
+server_ip   = "127.0.0.1"  # Listener IP
+server_port = 4444         # Listener Port
+key         = b"..."       # 32-byte shared AES key</pre>
+                </div>
+            </section>
+
+            <section id="security">
+                <h2>Security Warning</h2>
+                <div class="warning-box">
+                    <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <strong>AUTHORIZED USE ONLY:</strong> This tool is for educational purposes and authorized penetration testing only. 
+                        Developers assume no liability for misuse.
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="credits-box">
+                    <span class="author-title">Designed & Developed By</span>
+                    
+                    <div class="social-links">
+                        <a href="https://instagram.com/fiozxr_" target="_blank" data-tooltip="@fiozxr_">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                        <a href="https://github.com/fiozxr" target="_blank" data-tooltip="fiozxr">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.8rem; color: #555;">&copy; Fiozxr Project. All systems nominal.</p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+</html>
