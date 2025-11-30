@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiozxr Rahman - Cybersecurity Student Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header>
+        <div class="container">
+            <div class="logo">FIOZXR RAHMAN</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="burger" id="burger-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Hello, I'm <span class="highlight">Fiozxr Rahman</span>.</h1>
+                    <p class="tagline">A passionate Cybersecurity student dedicated to securing the digital world.</p>
+                    <div class="social-icons">
+                        <a href="#contact" class="btn primary-btn">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/pfp.jpg" alt="Fiozxr Rahman Profile Picture">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I am Fiozxr Rahman, a driven Cybersecurity student with a keen interest in network security, ethical hacking, and defending against cyber threats. My journey in cybersecurity is fueled by a desire to understand complex systems and build robust defenses to protect valuable data and infrastructure. I am constantly learning and exploring new technologies to stay ahead in this ever-evolving field.</p>
+                <p>My academic background doesn't provides any solid foundation in core computer science principles, I have some practical cybersecurity expriences. I am always looking for opportunities to learn diffurent things. I also hope for collaborate with fellow enthusiasts, and expand my practical experience and keep gaining knoledge.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Network Security</h3>
+                        <p>Understanding of network protocols, firewalls, intrusion detection/prevention systems, and VPNs.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming</h3>
+                        <p>Proficient in Python, C++, and Bash scripting for automation and security tool development.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Ethical Hacking</h3>
+                        <p>Familiar with penetration testing methodologies, vulnerability assessment, and common attack vectors.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-server"></i>
+                        <h3>OS & Systems</h3>
+                        <p>Experience with Linux/Unix environments, Windows Server, and virtualization technologies.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Data Security</h3>
+                        <p>Knowledge of data encryption, access control, and database security principles.</p>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Security (Basic)</h3>
+                        <p>Basic understanding of security best practices in cloud environments (e.g., AWS, Azure).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3><a href="https://github.com/fiozxr/ScannXR" target="_blank">ScannXR - simple network scanner</a></h3>
+                        <p>Developed a Python-based tool to scan local networks for active hosts and open ports.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Scapy</span><span>Networking</span>
+                        </div>
+                        <a href="https://github.com/fiozxr/ScannXR" target="_blank" class="btn secondary-btn">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <h3><a href="https://github.com/fiozxr/XRaptor" target="_blank">XRaptor - Simple Brute-Force Detector</a></h3>
+                        <p>A script that monitors log files for repeated failed login attempts and blocks suspicious IPs.</p>
+                        <div class="project-tech">
+                            <span>Bash</span><span>Linux</span><span>Security Scripting</span>
+                        </div>
+                        <a href="https://github.com/fiozxr/xraptor" target="_blank" class="btn secondary-btn">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <h3><a href="https://github.com/fiozxr/project-3" target="_blank">Web Vulnerability Scanner (POC)</a></h3>
+                        <p>Proof-of-concept tool to identify basic web vulnerabilities like XSS and SQL Injection.</p>
+                        <div class="project-tech">
+                            <span>Python</span><span>Requests</span><span>Web Security</span>
+                        </div>
+                        <a href="https://github.com/fiozxr/project-3" target="_blank" class="btn secondary-btn">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out!</p>
+
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="btn primary-btn">Send Message</button>
+            </form>
+
+            <p id="statusMsg" style="margin-top:10px; color:#00ff99; font-weight:bold;"></p>
+
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:fiozxrrahman@duck.com">fiozxrrahman@duck.com</a></p>
+                <p><i class="fab fa-github"></i> <a href="https://github.com/fiozxr" target="_blank">fiozxr</a></p>
+                <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/fiozxr_" target="_blank">@fiozxr_</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Fiozxr Rahman. No rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SUPABASE + FORM HANDLER -->
+    <script>
+        // Supabase Client
+        const supabase = supabase.createClient(
+            "https://nqlxwknnbfmwxtbzztzz.supabase.co",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xbHh3a25uYmZtd3h0Ynp6dHp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyNjg0NDUsImV4cCI6MjA3ODg0NDQ0NX0.Vye3nvGqOSq5evVmwnJ6XvFEiatnq0An9UG3z7smdM8"
+        );
+
+        const form = document.getElementById("contactForm");
+        const statusMsg = document.getElementById("statusMsg");
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            statusMsg.style.color = "#ffaa00";
+            statusMsg.textContent = "Sending...";
+
+            // Insert into Supabase
+            const { data, error } = await supabase
+                .from("messages")
+                .insert([{ name, email, message }]);
+
+            if (error) {
+                statusMsg.style.color = "red";
+                statusMsg.textContent = "Failed to send! Check console.";
+                console.error(error);
+            } else {
+                statusMsg.style.color = "#00ff99";
+                statusMsg.textContent = "Message sent successfully!";
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
