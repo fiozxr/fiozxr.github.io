@@ -1,4 +1,41 @@
 // ============================================
+// MOBILE DETECTION BANNER
+// No redirect — just a friendly notification
+// ============================================
+
+(function() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || window.innerWidth < 768;
+    
+    if (isMobile) {
+        const banner = document.getElementById('mobileBanner');
+        if (banner) {
+            // Small delay for smooth entrance
+            setTimeout(() => {
+                banner.classList.add('show');
+            }, 500);
+            
+            // Auto-dismiss after 8 seconds
+            setTimeout(() => {
+                dismissBanner();
+            }, 8000);
+        }
+    }
+})();
+
+function dismissBanner() {
+    const banner = document.getElementById('mobileBanner');
+    if (banner) {
+        banner.classList.add('dismissed');
+        banner.classList.remove('show');
+        
+        // Remove from DOM after animation
+        setTimeout(() => {
+            banner.style.display = 'none';
+        }, 500);
+    }
+}
+// ============================================
 // MOBILE PORTFOLIO — fiozxr
 // Smooth transitions, scroll animations, SEO-optimized
 // ============================================
