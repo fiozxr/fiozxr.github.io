@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /mobile/
+
+Sitemap: https://fiozxr.github.io/sitemap.xml
