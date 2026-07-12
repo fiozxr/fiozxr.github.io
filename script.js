@@ -1,9 +1,14 @@
 // ============================================
-// AESTHETIC MINIMALISM / CLEAN BRUTALISM
-// GSAP Animations | ASCII Video | Custom Cursor
-// Random Typography | Dark Mode | Project Modal
+// PERFORMANCE: Disable heavy animations on mobile
 // ============================================
+const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+    || window.innerWidth < 768;
 
+// Disable ASCII canvas on mobile to fix Performance score
+if (isMobileDevice) {
+    const asciiContainer = document.getElementById('asciiContainer');
+    if (asciiContainer) asciiContainer.style.display = 'none';
+}
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
