@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /mobile/
+Disallow: /mobile/style.css
+Disallow: /mobile/script.js
 
 Sitemap: https://fiozxrrahman.net.eu.org/sitemap.xml
-Sitemap: https://fiozxr.github.io/sitemap.xml
