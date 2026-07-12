@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fiozxr — portfolio</title>
+    <title>Fiozxr Rahman | Cybersecurity Student & Security Researcher Portfolio</title>
     
-    <!-- MOBILE REDIRECT — runs FIRST before anything loads -->
-    <script>
-        (function() {
-            // Check if mobile
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-                || window.innerWidth < 768;
-            
-            if (isMobile && !window.location.pathname.includes('/mobile/')) {
-                window.location.replace(window.location.origin + '/mobile/');
-            }
-        })();
+    <!-- SEO META (keep all your existing SEO tags here) -->
+    <meta name="description" content="Fiozxr Rahman - Junior cybersecurity student from Bangladesh. Building tools for penetration testing, encryption, network reconnaissance, and vulnerability research.">
+    <meta name="keywords" content="cybersecurity, penetration testing, encryption, network security, vulnerability research, CTF, fiozxr, Bangladesh, security tools, CryXR, NetRecon, WebVuln">
+    <meta name="author" content="Fiozxr Rahman">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://fiozxrrahman.net.eu.org/">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fiozxrrahman.net.eu.org/">
+    <meta property="og:title" content="Fiozxr Rahman | Cybersecurity Portfolio">
+    <meta property="og:description" content="Junior cybersecurity student building tools for penetration testing, encryption, and network reconnaissance.">
+    <meta property="og:site_name" content="fiozxr">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Fiozxr Rahman | Cybersecurity Portfolio">
+    <meta property="twitter:description" content="Junior cybersecurity student building tools for penetration testing, encryption, and network reconnaissance.">
+    <meta name="twitter:creator" content="@fiozxr">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Fiozxr Rahman",
+            "alternateName": "fiozxr",
+            "url": "https://fiozxrrahman.net.eu.org",
+            "sameAs": ["https://github.com/fiozxr"],
+            "jobTitle": "Cybersecurity Student",
+            "description": "Junior cybersecurity student specializing in penetration testing, encryption tools, and network reconnaissance.",
+            "knowsAbout": ["Cybersecurity", "Penetration Testing", "Network Security", "Cryptography", "Python", "Vulnerability Research"]
+        }
+    }
     </script>
     
+    <!-- Fonts & Styles -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -25,8 +52,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%2300ff88'>◈</text></svg>">
 </head>
 <body>
+    <!-- ========================================== -->
+    <!-- MOBILE SUGGESTION POPUP (Not a redirect!) -->
+    <!-- ========================================== -->
+    <div class="mobile-suggest" id="mobileSuggest" aria-hidden="true">
+        <div class="suggest-backdrop"></div>
+        <div class="suggest-card">
+            <div class="suggest-visual">
+                <div class="suggest-phone">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="phone-content">
+                            <span class="phone-ascii">◢◤</span>
+                            <span class="phone-text">fiozxr</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="suggest-signal"></div>
+            </div>
+            <h2 class="suggest-title">Mobile View Available</h2>
+            <p class="suggest-desc">
+                This site is optimized for desktop. For the best mobile experience, switch to our touch-optimized version.
+            </p>
+            <div class="suggest-actions">
+                <a href="/mobile/" class="suggest-btn suggest-primary" onclick="dismissSuggest()">
+                    <span>Switch to Mobile</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <button class="suggest-btn suggest-ghost" onclick="dismissSuggest()">
+                    Stay on Desktop
+                </button>
+            </div>
+            <button class="suggest-close" onclick="dismissSuggest()" aria-label="Dismiss suggestion">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
