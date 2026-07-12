@@ -411,3 +411,39 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('%cPRETTY ALIVE.', 'font-family: monospace; font-size: 14px; color: #888;');
     console.log('%c> Curious minds are welcome here.', 'font-family: monospace; font-size: 11px; color: #444;');
 });
+// ============================================
+// MOBILE SUGGESTION POPUP
+// Shows aesthetic popup instead of redirect
+// ============================================
+
+const mobileSuggest = document.getElementById('mobileSuggest');
+
+function showMobileSuggest() {
+    // Check if mobile and not already dismissed
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+        || window.innerWidth < 768;
+    const dismissed = localStorage.getItem('mobileSuggestDismissed');
+    
+    if (isMobile && !dismissed) {
+        setTimeout(() => {
+            mobileSuggest.classList.add('active');
+            mobileSuggest.setAttribute('aria-hidden', 'false');
+        }, 1500); // Show after 1.5s so they see the desktop site first
+    }
+}
+
+function dismissSuggest() {
+    mobileSuggest.classList.remove('active');
+    mobileSuggest.setAttribute('aria-hidden', 'true');
+    localStorage.setItem('mobileSuggestDismissed', 'true');
+}
+
+// Run on load
+window.addEventListener('load', showMobileSuggest);
+
+// Also check on resize
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+        mobileSuggest.classList.remove('active');
+    }
+});
