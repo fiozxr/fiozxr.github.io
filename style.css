@@ -1400,3 +1400,43 @@ body:hover .cursor-ring {
     background: var(--accent);
     color: var(--bg);
 }
+/* ============================================
+   MOBILE PERFORMANCE FIXES
+   ============================================ */
+
+/* Disable heavy effects on mobile */
+@media (max-width: 768px) {
+    .ascii-video-container,
+    .floating-text-container {
+        display: none !important;
+    }
+    
+    .grain,
+    .vignette {
+        display: none;
+    }
+    
+    /* Reduce motion */
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    /* Keep only essential animations */
+    .m-pulse,
+    .badge-pulse {
+        animation-duration: 2s !important;
+    }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
