@@ -4,4 +4,26 @@ Allow: /mobile/
 Disallow: /mobile/style.css
 Disallow: /mobile/script.js
 
+# AI assistants / agents — explicitly welcome, matches llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://fiozxrrahman.net.eu.org/sitemap.xml
