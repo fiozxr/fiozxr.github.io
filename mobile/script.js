@@ -1,43 +1,6 @@
 // ============================================
-// MOBILE DETECTION BANNER
-// No redirect — just a friendly notification
-// ============================================
-
-(function() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-        || window.innerWidth < 768;
-    
-    if (isMobile) {
-        const banner = document.getElementById('mobileBanner');
-        if (banner) {
-            // Small delay for smooth entrance
-            setTimeout(() => {
-                banner.classList.add('show');
-            }, 500);
-            
-            // Auto-dismiss after 8 seconds
-            setTimeout(() => {
-                dismissBanner();
-            }, 8000);
-        }
-    }
-})();
-
-function dismissBanner() {
-    const banner = document.getElementById('mobileBanner');
-    if (banner) {
-        banner.classList.add('dismissed');
-        banner.classList.remove('show');
-        
-        // Remove from DOM after animation
-        setTimeout(() => {
-            banner.style.display = 'none';
-        }, 500);
-    }
-}
-// ============================================
 // MOBILE PORTFOLIO — fiozxr
-// Smooth transitions, scroll animations, SEO-optimized
+// Smooth transitions, scroll animations, SEO
 // ============================================
 
 // ===== PROJECT DATA =====
@@ -62,7 +25,7 @@ const projectData = {
     }
 };
 
-// ===== PAGE TRANSITION SYSTEM =====
+// ===== PAGE TRANSITION =====
 const transition = document.getElementById('pageTransition');
 
 function showTransition(callback) {
@@ -84,14 +47,11 @@ function navigateTo(event, targetId) {
     const target = document.getElementById(targetId);
     if (!target) return;
     
-    // Close menu if open
     closeMenu();
     
-    // Show transition then scroll
     showTransition(() => {
         target.scrollIntoView({ behavior: 'instant', block: 'start' });
         
-        // Animate the target section
         setTimeout(() => {
             target.querySelectorAll('[data-animate]').forEach(el => {
                 el.classList.add('animated');
@@ -125,12 +85,11 @@ function closeMenu() {
     document.body.style.overflow = '';
 }
 
-// Close menu on escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
 });
 
-// ===== SCROLL ANIMATIONS (Intersection Observer) =====
+// ===== SCROLL ANIMATIONS =====
 const observerOptions = {
     root: null,
     rootMargin: '0px 0px -50px 0px',
@@ -142,20 +101,17 @@ const scrollObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
             
-            // Animate count-up numbers
             const counters = entry.target.querySelectorAll('[data-count]');
             counters.forEach(counter => {
                 const target = parseInt(counter.dataset.count);
                 animateCounter(counter, target);
             });
             
-            // Unobserve after animation
             scrollObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Initialize scroll animations
 document.querySelectorAll('[data-animate]').forEach(el => {
     scrollObserver.observe(el);
 });
@@ -170,7 +126,7 @@ function animateCounter(el, target) {
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            el.textContent = target + (target === 3 ? '+' : '+');
+            el.textContent = target + '+';
             clearInterval(timer);
         } else {
             el.textContent = Math.floor(current);
@@ -203,8 +159,6 @@ function openModal(projectKey) {
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    
-    // Focus trap
     modal.querySelector('.m-modal-close').focus();
 }
 
@@ -233,17 +187,15 @@ document.addEventListener('touchend', (e) => {
     const deltaY = touchEndY - touchStartY;
     const deltaX = Math.abs(touchEndX - touchStartX);
     
-    // Swipe down to close (only if scrolling at top)
     const modalContent = modal.querySelector('.m-modal-content');
     if (deltaY > 80 && deltaX < 50 && modalContent.scrollTop <= 0) {
         closeModal();
     }
 }, { passive: true });
 
-// Close modal on backdrop click
 document.querySelector('.m-modal-backdrop').addEventListener('click', closeModal);
 
-// ===== HEADER SHOW/HIDE ON SCROLL =====
+// ===== HEADER SHOW/HIDE =====
 let lastScrollY = 0;
 const header = document.querySelector('.m-header');
 
@@ -259,21 +211,7 @@ window.addEventListener('scroll', () => {
     lastScrollY = currentScrollY;
 }, { passive: true });
 
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href === '#') return;
-        
-        const target = document.querySelector(href);
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-
-// ===== PROJECT CARD KEYBOARD ACCESSIBILITY =====
+// ===== KEYBOARD ACCESSIBILITY =====
 document.querySelectorAll('.m-project').forEach(card => {
     card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -283,9 +221,8 @@ document.querySelectorAll('.m-project').forEach(card => {
     });
 });
 
-// ===== INITIAL ANIMATIONS ON LOAD =====
+// ===== INITIAL LOAD =====
 window.addEventListener('load', () => {
-    // Animate hero elements immediately
     document.querySelectorAll('.m-hero [data-animate]').forEach((el, i) => {
         setTimeout(() => {
             el.classList.add('animated');
@@ -293,7 +230,6 @@ window.addEventListener('load', () => {
     });
 });
 
-// ===== CONSOLE EASTER EGG =====
+// ===== CONSOLE =====
 console.log('%c◢◤ MOBILE ◢◤', 'font-size: 20px; color: #00ff88;');
 console.log('%cfiozxr — PRETTY ALIVE', 'font-size: 12px; color: #888;');
-console.log('%cSEO optimized • Accessible • Smooth transitions', 'font-size: 10px; color: #444;');
