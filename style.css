@@ -44,6 +44,30 @@ OPTIMIZED FOR LIGHTHOUSE 100/100
 }
 
 /* ============================================
+KEYBOARD FOCUS VISIBILITY (a11y)
+============================================ */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Custom cursor is hidden until JS confirms pointer support,
+   so default cursors/focus rings always work if JS fails */
+.js-ready .cursor-dot,
+.js-ready .cursor-ring,
+.js-ready .cursor-trail {
+  display: block;
+}
+.cursor-dot,
+.cursor-ring,
+.cursor-trail {
+  display: none;
+}
+
+/* ============================================
 MOBILE SUGGESTION POPUP
 ============================================ */
 .mobile-suggest {
@@ -318,6 +342,11 @@ body {
   color: var(--fg);
   line-height: 1.5;
   overflow-x: hidden;
+}
+
+/* Only hide the native cursor once JS confirms the custom cursor is active.
+   Prevents a missing cursor if scripts fail to load. */
+body.js-ready {
   cursor: none;
 }
 
@@ -1314,10 +1343,47 @@ RESPONSIVE
 
 @media (max-width: 768px) {
   .nav-links {
-    display: none;
+    position: fixed;
+    inset: 0 0 0 30%;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--bg-elevated);
+    border-left: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 60;
+    display: flex;
+  }
+  .nav-links.open {
+    transform: translateX(0);
+  }
+  .nav-link {
+    color: var(--fg);
+    font-size: 1.1rem;
+  }
+  .nav-link::after {
+    background: var(--accent);
   }
   .nav-menu {
     display: flex;
+    position: relative;
+    z-index: 70;
+  }
+  .nav-menu span {
+    background: #fff;
+  }
+  .nav.menu-open {
+    mix-blend-mode: normal;
+  }
+  .nav-menu.active span:first-child {
+    transform: translateY(3px) rotate(45deg);
+  }
+  .nav-menu.active span:last-child {
+    transform: translateY(-3px) rotate(-45deg);
   }
   .hero {
     padding: 0 1.5rem;
@@ -1419,6 +1485,22 @@ MOBILE PERFORMANCE FIXES
   .badge-pulse {
     animation-duration: 2s !important;
   }
+}
+
+/* Fallback: if JS never initializes the custom cursor, keep normal
+   pointer/text cursors everywhere instead of an invisible one */
+body:not(.js-ready) .btn-primary,
+body:not(.js-ready) .btn-ghost,
+body:not(.js-ready) .nav-link,
+body:not(.js-ready) .project-card,
+body:not(.js-ready) .arsenal-item,
+body:not(.js-ready) .contact-link,
+body:not(.js-ready) .modal-close,
+body:not(.js-ready) .footer-back,
+body:not(.js-ready) .theme-toggle,
+body:not(.js-ready) .nav-menu,
+body:not(.js-ready) .nav-logo {
+  cursor: pointer;
 }
 
 /* Respect user preference for reduced motion */
