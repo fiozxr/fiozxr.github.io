@@ -36,16 +36,16 @@ This portfolio is built as a lightweight, static website enhanced with cloud ser
 
 This repository highlights the following security tools I have developed:
 
-### 1. [ScannXR](https://github.com/fiozxr/ScannXR)
-* **Description:** A simple network scanner that identifies active hosts and open ports on a local network.
+### 1. [CryXR](https://github.com/fiozxr/CryXR)
+* **Description:** A multi-layered encryption and decryption tool with custom cipher stacking, dynamic key derivation, and configurable cipher pipelines.
+* **Tech Stack:** Python, Cryptography (AES, RSA).
+
+### 2. NetRecon
+* **Description:** A LAN reconnaissance scanner for active host discovery, open-port mapping, and service fingerprinting.
 * **Tech Stack:** Python, Scapy, Networking.
 
-### 2. [XRaptor](https://github.com/fiozxr/XRaptor)
-* **Description:** A brute-force detector script that monitors log files for repeated failed login attempts and blocks suspicious IPs.
-* **Tech Stack:** Bash, Linux, Security Scripting.
-
-### 3. [Web Vulnerability Scanner (POC)](https://github.com/fiozxr/project-3)
-* **Description:** A Proof-of-Concept tool designed to identify basic web vulnerabilities such as XSS and SQL Injection.
+### 3. WebVuln
+* **Description:** A Proof-of-Concept scanner for identifying basic web vulnerabilities such as XSS and SQL Injection.
 * **Tech Stack:** Python, Requests, Web Security.
 
 ---
@@ -85,7 +85,7 @@ If you are setting this up for yourself, you must configure your database table 
 
 Feel free to reach out for collaborations or opportunities!
 
-* **Email:** [fiozxrrahman@duck.com](mailto:fiozxrrahman@duck.com)
+* **Email:** [connect@fiozxrrahman.net.eu.org](mailto:connect@fiozxrrahman.net.eu.org)
 * **GitHub:** [fiozxr](https://github.com/fiozxr)
 * **Instagram:** [@fiozxr_](https://instagram.com/fiozxr_)
 
