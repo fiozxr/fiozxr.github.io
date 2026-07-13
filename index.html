@@ -7,10 +7,16 @@
 
 <!-- SEO META -->
 <meta name="description" content="Fiozxr Rahman - Junior cybersecurity student from India. Building tools for penetration testing, encryption, network reconnaissance, and vulnerability research.">
-<meta name="keywords" content="cybersecurity, penetration testing, encryption, network security, vulnerability research, CTF, fiozxr, Bangladesh, security tools, CryXR, NetRecon, WebVuln">
+<meta name="keywords" content="cybersecurity, penetration testing, encryption, network security, vulnerability research, CTF, fiozxr, India, security tools, CryXR, NetRecon, WebVuln">
 <meta name="author" content="Fiozxr Rahman">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="geo.region" content="IN">
+<meta name="geo.placename" content="India">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f5f5" media="(prefers-color-scheme: light)">
 <link rel="canonical" href="https://fiozxrrahman.net.eu.org/">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text x='50%25' y='58%25' font-size='60' text-anchor='middle' fill='%2300ff88'>◈</text></svg>">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -68,6 +74,17 @@
     ],
     "jobTitle": "Cybersecurity Student",
     "description": "Junior cybersecurity student specializing in penetration testing, encryption tools, and network reconnaissance.",
+    "nationality": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "homeLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      }
+    },
     "knowsAbout": [
       "Cybersecurity",
       "Penetration Testing",
@@ -162,13 +179,13 @@
 <!-- Navigation -->
 <nav class="nav" aria-label="Main navigation">
   <a href="#" class="nav-logo" data-cursor="magnetic">fiozxr<span class="logo-reg">®</span></a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#about" class="nav-link" data-cursor="magnetic">Studio</a>
     <a href="#projects" class="nav-link" data-cursor="magnetic">Projects<sup>TM</sup></a>
     <a href="#arsenal" class="nav-link" data-cursor="magnetic">Arsenal</a>
     <a href="#contact" class="nav-link" data-cursor="magnetic">Contact</a>
   </div>
-  <button class="nav-menu" aria-label="Menu" data-cursor="magnetic">
+  <button class="nav-menu" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false" data-cursor="magnetic">
     <span></span>
     <span></span>
   </button>
@@ -415,15 +432,15 @@
         <span class="link-name">GitHub</span>
         <span class="link-handle">@fiozxr</span>
       </a>
-      <a href="mailto:hello@fiozxr.dev" class="contact-link" data-cursor="magnetic">
+      <a href="mailto:connect@fiozxrrahman.net.eu.org" class="contact-link" data-cursor="magnetic">
         <span class="link-name">Email</span>
         <span class="link-handle">connect@fiozxrrahman.net.eu.org</span>
       </a>
       <a href="https://instagram.com/fiozxr_" class="contact-link" target="_blank" rel="noopener noreferrer" data-cursor="magnetic">
-        <span class="link-name">LinkedIn</span>
-        <span class="link-handle">/in/fiozxr</span>
+        <span class="link-name">Instagram</span>
+        <span class="link-handle">@fiozxr_</span>
       </a>
-      <a href="https://X.com/fiozxr_" class="contact-link" target="_blank" rel="noopener noreferrer" data-cursor="magnetic">
+      <a href="https://x.com/fiozxr_" class="contact-link" target="_blank" rel="noopener noreferrer" data-cursor="magnetic">
         <span class="link-name">X</span>
         <span class="link-handle">@fiozxr_</span>
       </a>
@@ -452,7 +469,7 @@
 </footer>
 
 <!-- Project Modal -->
-<div class="modal" id="projectModal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
   <div class="modal-backdrop"></div>
   <div class="modal-content">
     <button class="modal-close" data-cursor="magnetic" aria-label="Close modal">×</button>
