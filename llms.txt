@@ -9,8 +9,8 @@ Fiozxr Rahman is a cybersecurity student building security tools for penetration
 ## Projects
 
 - [CryXR](https://github.com/fiozxr/CryXR): Multi-layered encryption and decryption tool with custom cipher stacking
-- [NetRecon](https://github.com/fiozxr): LAN scanner for active hosts, open ports, and service fingerprinting
-- [WebVuln](https://github.com/fiozxr): Proof-of-concept scanner for XSS, SQLi, and common misconfigurations
+- NetRecon (repo not yet public): LAN scanner for active hosts, open ports, and service fingerprinting
+- WebVuln (repo not yet public): Proof-of-concept scanner for XSS, SQLi, and common misconfigurations
 
 ## Tech Stack
 
