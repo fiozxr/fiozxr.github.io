@@ -1,0 +1,32 @@
+# Fiozxr Rahman - Cybersecurity Portfolio
+
+> Junior cybersecurity student from India specializing in penetration testing, encryption tools, and network reconnaissance.
+
+## About
+
+Fiozxr Rahman is a cybersecurity student building security tools for penetration testing, encryption, and vulnerability research. Based in India, focused on ethical hacking and security education.
+
+## Projects
+
+- [CryXR](https://github.com/fiozxr/CryXR): Multi-layered encryption and decryption tool with custom cipher stacking
+- [NetRecon](https://github.com/fiozxr): LAN scanner for active hosts, open ports, and service fingerprinting
+- [WebVuln](https://github.com/fiozxr): Proof-of-concept scanner for XSS, SQLi, and common misconfigurations
+
+## Tech Stack
+
+**Languages:** Python, Bash, C, SQL
+**Security:** Kali Linux, Nmap, Metasploit, Burp Suite
+**Cryptography:** AES, RSA, Custom Ciphers, Hash Functions
+**Development:** Git, GitHub, VS Code, Docker
+
+## Contact
+
+- GitHub: [@fiozxr](https://github.com/fiozxr)
+- Email: connect@fiozxrrahman.net.eu.org
+- Instagram: [@fiozxr_](https://instagram.com/fiozxr_)
+- X: [@fiozxr_](https://x.com/fiozxr_)
+
+## Website
+
+- Main: https://fiozxrrahman.net.eu.org/
+- host: https://fiozxr.github.io/
