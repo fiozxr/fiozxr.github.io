@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service & AI Assistant Demo • NexaFlow Solutions</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            },
+            surface: {
+              900: '#0b0f17',
+              850: '#111827',
+              800: '#1e293b',
+              700: '#334155',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-surface-900 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Demo Bar -->
+  <div class="bg-surface-850 text-slate-400 text-xs py-1.5 px-4 border-b border-slate-800 flex justify-between items-center max-w-7xl mx-auto">
+    <span>⚡ <strong>Interactive Client Demo:</strong> High-Conversion Service Landing + Live AI Chat Assistant</span>
+    <span class="hidden sm:inline text-brand-400">Customizable for Agencies, Startups & Clinics</span>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-surface-900/80 backdrop-blur-lg border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-brand-500/20">
+          N
+        </div>
+        <div>
+          <span class="text-lg font-extrabold tracking-tight text-white block leading-none">NexaFlow Systems</span>
+          <span class="text-[10px] tracking-widest uppercase text-brand-400 font-medium">Digital & AI Engineering</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#services" class="hover:text-brand-400 transition-colors">Solutions</a>
+        <a href="#calculator" class="hover:text-brand-400 transition-colors">Instant Estimate</a>
+        <a href="#results" class="hover:text-brand-400 transition-colors">Case Studies</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <button onclick="toggleChat()" class="bg-brand-600 hover:bg-brand-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl shadow-lg shadow-brand-600/30 transition-all flex items-center space-x-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Ask AI Assistant</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -top-20 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-surface-800 text-brand-400 border border-slate-700/80">
+        <span>🚀 Custom Web Apps & Automated AI Workflows</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+        Build Faster, Automate Smarter, <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-sky-300 to-indigo-400">Scale Your Business.</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        We craft lightweight web architectures, customer-facing AI agents, and frictionless database workflows designed for high conversion and effortless operations.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 pt-4">
+        <a href="#calculator" class="bg-white text-surface-900 hover:bg-slate-100 font-bold px-6 py-3.5 rounded-xl text-sm transition-all shadow-xl">
+          Calculate Project Cost
+        </a>
+        <button onclick="toggleChat()" class="glass-card hover:bg-surface-800 text-slate-200 font-semibold px-6 py-3.5 rounded-xl text-sm transition-all flex items-center space-x-2">
+          <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          <span>Chat with Assistant</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics / Trust Banner -->
+  <section class="border-y border-slate-800 bg-surface-850/50 py-8 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <span class="block text-2xl sm:text-3xl font-extrabold text-white">99.9%</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Uptime SLA</span>
+      </div>
+      <div>
+        <span class="block text-2xl sm:text-3xl font-extrabold text-brand-400">&lt; 300ms</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Global Load Speed</span>
+      </div>
+      <div>
+        <span class="block text-2xl sm:text-3xl font-extrabold text-white">100%</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Direct Ownership</span>
+      </div>
+      <div>
+        <span class="block text-2xl sm:text-3xl font-extrabold text-indigo-400">24/7</span>
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Automated Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Project Cost Calculator -->
+  <main id="calculator" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center space-y-2 mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-brand-400">Interactive Estimator</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Instant Project Cost Calculator</h2>
+      <p class="text-sm text-slate-400 max-w-xl mx-auto">
+        Select your project scope and features to get a real-time investment and timeline estimate.
+      </p>
+    </div>
+
+    <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Options Column -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Project Tier -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">1. Select Base Architecture</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="selectTier('landing')" id="tier-landing" class="tier-btn p-4 rounded-2xl border text-left transition-all border-brand-500 bg-brand-500/10">
+              <span class="block text-xs font-bold text-white">Landing Page</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">1-Page High-Conversion</span>
+              <span class="text-xs font-extrabold text-brand-400 mt-2 block">$ 120</span>
+            </button>
+            <button onclick="selectTier('webapp')" id="tier-webapp" class="tier-btn p-4 rounded-2xl border text-left transition-all border-slate-700 bg-surface-800/60">
+              <span class="block text-xs font-bold text-white">Full Web App</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Auth + Database + CRUD</span>
+              <span class="text-xs font-extrabold text-brand-400 mt-2 block">$ 380</span>
+            </button>
+            <button onclick="selectTier('enterprise')" id="tier-enterprise" class="tier-btn p-4 rounded-2xl border text-left transition-all border-slate-700 bg-surface-800/60">
+              <span class="block text-xs font-bold text-white">Custom MVP</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Full Stack + Admin Panel</span>
+              <span class="text-xs font-extrabold text-brand-400 mt-2 block">$ 650</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Add-on Modules -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">2. Add-on Integrations</label>
+          <div class="space-y-2.5">
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-slate-700/80 bg-surface-800/40 cursor-pointer hover:bg-surface-800 transition-colors">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="calc-ai-chat" onchange="recalculateCost()" checked class="w-4 h-4 text-brand-500 rounded bg-slate-900 border-slate-700 focus:ring-brand-500" />
+                <div>
+                  <span class="text-xs font-bold text-white block">AI Assistant & Knowledge Base Widget</span>
+                  <span class="text-[11px] text-slate-400">Automated Q&A + 24/7 lead intake</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-brand-400">+$ 150</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-slate-700/80 bg-surface-800/40 cursor-pointer hover:bg-surface-800 transition-colors">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="calc-multilingual" onchange="recalculateCost()" class="w-4 h-4 text-brand-500 rounded bg-slate-900 border-slate-700 focus:ring-brand-500" />
+                <div>
+                  <span class="text-xs font-bold text-white block">Multilingual Translation (EN/FR/ES)</span>
+                  <span class="text-[11px] text-slate-400">Instant toggle across all content</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-brand-400">+$ 80</span>
+            </label>
+
+            <label class="flex items-center justify-between p-3.5 rounded-xl border border-slate-700/80 bg-surface-800/40 cursor-pointer hover:bg-surface-800 transition-colors">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="calc-whatsapp" onchange="recalculateCost()" checked class="w-4 h-4 text-brand-500 rounded bg-slate-900 border-slate-700 focus:ring-brand-500" />
+                <div>
+                  <span class="text-xs font-bold text-white block">WhatsApp & Email Webhook Automation</span>
+                  <span class="text-[11px] text-slate-400">Instant notification when a client books or inquires</span>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-brand-400">+$ 60</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estimate Summary Card -->
+      <div class="lg:col-span-5 bg-surface-850 rounded-2xl p-6 border border-slate-700 space-y-6">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 block mb-1">Estimated Investment</span>
+          <div class="flex items-baseline space-x-2">
+            <span class="text-4xl font-extrabold text-white" id="estimate-price">$ 330</span>
+            <span class="text-xs text-slate-400">one-time</span>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-4 space-y-2.5 text-xs text-slate-300">
+          <div class="flex justify-between">
+            <span class="text-slate-400">Estimated Turnaround:</span>
+            <strong class="text-white" id="estimate-time">3 - 5 Business Days</strong>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Deployment & Hosting:</span>
+            <strong class="text-emerald-400">Free Tier (Vercel/Netlify)</strong>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Revisions Included:</span>
+            <strong class="text-white">2 Full Rounds</strong>
+          </div>
+        </div>
+
+        <div class="bg-surface-800/80 p-3.5 rounded-xl border border-slate-700/60 text-[11px] text-slate-300 space-y-1">
+          <p class="font-bold text-white">📦 What you get:</p>
+          <p>• 100% clean, modular source code</p>
+          <p>• Zero recurring platform commission fees</p>
+          <p>• Full deployment assistance</p>
+        </div>
+
+        <button onclick="requestProposalModal()" class="w-full bg-brand-500 hover:bg-brand-400 text-surface-900 font-extrabold py-3.5 rounded-xl text-xs shadow-lg transition-all">
+          Request This Exact Scope
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating AI Assistant Widget -->
+  <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Chat Window -->
+    <div id="chat-window" class="glass-card w-80 sm:w-96 rounded-2xl shadow-2xl border border-slate-700/80 mb-3 hidden flex-col overflow-hidden transition-all duration-300">
+      <!-- Chat Header -->
+      <div class="bg-surface-850 p-4 border-b border-slate-700/80 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center font-bold text-xs">
+            AI
+          </div>
+          <div>
+            <span class="text-xs font-bold text-white block leading-tight">NexaFlow AI Assistant</span>
+            <span class="text-[10px] text-emerald-400 font-medium">● Online • 24/7 Knowledge Agent</span>
+          </div>
+        </div>
+        <button onclick="toggleChat()" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div id="chat-messages" class="p-4 space-y-3 h-72 overflow-y-auto text-xs">
+        <div class="bg-surface-800 text-slate-200 p-3 rounded-xl rounded-tl-none border border-slate-700/60 leading-relaxed">
+          Hello! 👋 I'm the NexaFlow AI assistant. Ask me anything about our development turnaround, pricing, tech stack, or booking workflow!
+        </div>
+      </div>
+
+      <!-- Quick Prompt Chips -->
+      <div class="p-2 border-t border-slate-800 bg-surface-900/60 flex flex-wrap gap-1.5" id="prompt-chips">
+        <button onclick="sendQuickQuestion('What is your turnaround time?')" class="bg-surface-800 hover:bg-slate-700 text-slate-300 text-[10px] px-2.5 py-1 rounded-lg transition-all">Turnaround Time?</button>
+        <button onclick="sendQuickQuestion('What tech stack do you use?')" class="bg-surface-800 hover:bg-slate-700 text-slate-300 text-[10px] px-2.5 py-1 rounded-lg transition-all">Tech Stack?</button>
+        <button onclick="sendQuickQuestion('How much do you charge?')" class="bg-surface-800 hover:bg-slate-700 text-slate-300 text-[10px] px-2.5 py-1 rounded-lg transition-all">Pricing?</button>
+      </div>
+
+      <!-- Chat Input Box -->
+      <form id="chat-form" class="p-3 bg-surface-850 border-t border-slate-800 flex items-center space-x-2">
+        <input type="text" id="chat-input" placeholder="Type a question..." class="flex-1 bg-surface-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-400" />
+        <button type="submit" class="bg-brand-500 hover:bg-brand-400 text-surface-900 font-bold p-2 rounded-xl text-xs transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Toggle Button -->
+    <button onclick="toggleChat()" class="bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white p-3.5 rounded-full shadow-2xl transition-all hover:scale-105 flex items-center space-x-2 border border-white/10">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+      <span class="text-xs font-bold pr-1">Ask AI</span>
+    </button>
+  </div>
+
+  <!-- Proposal Modal -->
+  <div id="proposal-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full rounded-2xl p-6 shadow-2xl border border-slate-700 space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <h3 class="text-lg font-bold text-white">Request Project Proposal</h3>
+        <button onclick="closeProposalModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-slate-400">
+        Leave your details and we will send a customized scope breakdown and live demo link within 24 hours.
+      </p>
+      <form id="proposal-form" class="space-y-3 text-xs">
+        <input type="text" id="prop-name" required placeholder="Your Name / Business" class="w-full bg-surface-850 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-400" />
+        <input type="email" id="prop-email" required placeholder="Email Address" class="w-full bg-surface-850 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-400" />
+        <textarea id="prop-notes" rows="2" placeholder="Tell us about your project or timeline..." class="w-full bg-surface-850 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-brand-400"></textarea>
+        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-400 text-surface-900 font-bold py-3 rounded-xl shadow transition-all">
+          Submit Scope Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-surface-850 text-slate-500 text-xs py-10 px-4 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="text-slate-300 font-bold">NexaFlow Systems • AI & Full Stack Architecture</p>
+        <p class="mt-0.5">High-performance web applications and automated workflows.</p>
+      </div>
+      <div>
+        © 2026 Interactive Portfolio Prototype.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    let currentTier = 'landing';
+    const TIER_PRICES = { landing: 120, webapp: 380, enterprise: 650 };
+    const TIER_DAYS = { landing: "2 - 4 Days", webapp: "4 - 7 Days", enterprise: "7 - 12 Days" };
+
+    function selectTier(tier) {
+      currentTier = tier;
+      document.querySelectorAll('.tier-btn').forEach(btn => {
+        btn.classList.remove('border-brand-500', 'bg-brand-500/10');
+        btn.classList.add('border-slate-700', 'bg-surface-800/60');
+      });
+
+      const activeBtn = document.getElementById(`tier-${tier}`);
+      activeBtn.classList.remove('border-slate-700', 'bg-surface-800/60');
+      activeBtn.classList.add('border-brand-500', 'bg-brand-500/10');
+
+      recalculateCost();
+    }
+
+    function recalculateCost() {
+      let total = TIER_PRICES[currentTier];
+      if (document.getElementById('calc-ai-chat').checked) total += 150;
+      if (document.getElementById('calc-multilingual').checked) total += 80;
+      if (document.getElementById('calc-whatsapp').checked) total += 60;
+
+      document.getElementById('estimate-price').innerText = `$ ${total}`;
+      document.getElementById('estimate-time').innerText = TIER_DAYS[currentTier];
+    }
+
+    // AI Chat Knowledge Engine
+    const KNOWLEDGE_BASE = [
+      {
+        keywords: ['turnaround', 'time', 'how long', 'days', 'duration'],
+        answer: "Our typical turnaround for a simple landing page is 2 to 4 business days. For full web apps with database integration and AI features, it takes 5 to 7 days."
+      },
+      {
+        keywords: ['tech stack', 'technology', 'technologies', 'stack', 'framework', 'tools'],
+        answer: "We specialize in modern, high-speed stacks: Tailwind CSS, modern JavaScript / TypeScript, Supabase / SQLite databases, and lightweight Python/FastAPI backends with LLM API integrations."
+      },
+      {
+        keywords: ['price', 'pricing', 'cost', 'charge', 'rate', 'fees'],
+        answer: "Our standalone landing pages start at $120, while custom web applications with backend and database integration range from $380 to $650+. You can use the calculator on this page for an exact breakdown!"
+      },
+      {
+        keywords: ['hosting', 'maintenance', 'server', 'domain'],
+        answer: "We set up free-tier serverless hosting on Vercel, Netlify, or Cloudflare, meaning you have zero recurring hosting costs for standard traffic. You only pay for your domain!"
+      },
+      {
+        keywords: ['ai', 'chatbot', 'rag', 'assistant'],
+        answer: "Our AI assistant is custom-configured with your business's exact FAQ, product catalog, and pricing. It runs 24/7 to answer customer inquiries and capture qualified leads."
+      }
+    ];
+
+    function toggleChat() {
+      const win = document.getElementById('chat-window');
+      win.classList.toggle('hidden');
+      win.classList.toggle('flex');
+    }
+
+    function sendQuickQuestion(question) {
+      document.getElementById('chat-input').value = question;
+      handleUserMessage(question);
+    }
+
+    function handleUserMessage(userText) {
+      if (!userText.trim()) return;
+
+      const container = document.getElementById('chat-messages');
+      // User message
+      const userBubble = document.createElement('div');
+      userBubble.className = "bg-brand-600 text-white p-3 rounded-xl rounded-tr-none ml-auto max-w-[85%] leading-relaxed";
+      userBubble.innerText = userText;
+      container.appendChild(userBubble);
+      container.scrollTop = container.scrollHeight;
+
+      document.getElementById('chat-input').value = '';
+
+      // Typing simulation
+      setTimeout(() => {
+        const lower = userText.toLowerCase();
+        let matchedAnswer = "Thanks for asking! We can build a custom tailored solution for your specific requirements. Would you like to leave your email so we can send a 1-page proposal?";
+
+        for (const entry of KNOWLEDGE_BASE) {
+          if (entry.keywords.some(k => lower.includes(k))) {
+            matchedAnswer = entry.answer;
+            break;
+          }
+        }
+
+        const aiBubble = document.createElement('div');
+        aiBubble.className = "bg-surface-800 text-slate-200 p-3 rounded-xl rounded-tl-none border border-slate-700/60 leading-relaxed";
+        aiBubble.innerText = matchedAnswer;
+        container.appendChild(aiBubble);
+        container.scrollTop = container.scrollHeight;
+      }, 500);
+    }
+
+    document.getElementById('chat-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = document.getElementById('chat-input').value;
+      handleUserMessage(val);
+    });
+
+    function requestProposalModal() {
+      document.getElementById('proposal-modal').classList.remove('hidden');
+    }
+
+    function closeProposalModal() {
+      document.getElementById('proposal-modal').classList.add('hidden');
+    }
+
+    document.getElementById('proposal-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeProposalModal();
+      alert("Thank you! Your scope estimate has been received. We will follow up shortly.");
+    });
+  </script>
+</body>
+</html>

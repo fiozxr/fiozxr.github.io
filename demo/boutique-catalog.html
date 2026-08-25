@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domaine & Artisan Cuvée Showcase (Multilingual EN/FR)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'serif'],
+          },
+          colors: {
+            cellar: {
+              900: '#14110f',
+              800: '#211c19',
+              700: '#382f2a',
+              100: '#f7f4f0',
+              50: '#fcfbf9',
+            },
+            gold: {
+              400: '#e5c07b',
+              500: '#c89d47',
+              600: '#a37c2c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cellar-50 text-cellar-900 antialiased selection:bg-gold-500 selection:text-white">
+
+  <!-- Top Header Banner -->
+  <div class="bg-cellar-900 text-stone-300 text-xs py-1.5 px-4 border-b border-cellar-800 flex justify-between items-center max-w-7xl mx-auto">
+    <span id="banner-text">✨ <strong>Domaine Prototype:</strong> Multilingual Artisan Catalog & Private Tasting Booking</span>
+    <div class="flex items-center space-x-2">
+      <button onclick="setLanguage('FR')" id="lang-fr" class="px-2 py-0.5 rounded text-xs font-semibold bg-gold-600 text-white transition-all">FR</button>
+      <button onclick="setLanguage('EN')" id="lang-en" class="px-2 py-0.5 rounded text-xs font-semibold text-stone-400 hover:text-white transition-all">EN</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full border border-gold-500/50 flex items-center justify-center font-serif text-2xl text-gold-600 font-bold bg-cellar-50">
+          V
+        </div>
+        <div>
+          <h1 class="font-serif text-2xl font-bold tracking-tight text-cellar-900 leading-none">Domaine Val-d'Or</h1>
+          <span class="text-[10px] uppercase tracking-widest text-gold-600 font-medium" id="nav-subtitle">Vigneron Indépendant • Épernay</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+        <a href="#catalog" class="hover:text-gold-600 transition-colors" id="nav-wines">Our Cuvées</a>
+        <a href="#terroir" class="hover:text-gold-600 transition-colors" id="nav-terroir">The Terroir</a>
+        <a href="#tasting" class="hover:text-gold-600 transition-colors" id="nav-visit">Cellar Visits</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <button onclick="openInquiryDrawer()" class="relative bg-cellar-900 hover:bg-black text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-xl shadow transition-all flex items-center space-x-2">
+          <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span id="nav-inquiry-btn">Inquiry Drawer</span>
+          <span id="cart-count" class="bg-gold-500 text-cellar-900 text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-cellar-900 text-white py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 opacity-30 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-cellar-900 via-cellar-900/80 to-transparent"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto space-y-6">
+      <div class="inline-flex items-center space-x-2 border border-gold-500/40 bg-gold-500/10 px-3 py-1 rounded-full text-xs text-gold-400">
+        <span id="hero-badge">4th Generation Artisanal Winemaking • High Environmental Value (HVE)</span>
+      </div>
+      <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight" id="hero-title">
+        The Pure Expression of Grand Cru Terroir
+      </h2>
+      <p class="text-stone-300 text-base sm:text-lg max-w-2xl font-light leading-relaxed" id="hero-desc">
+        Hand-harvested, aged on natural lees in our historic chalk cellars. Explore our collection of artisanal cuvées and book a private tasting with the winemaker.
+      </p>
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#catalog" class="bg-gold-500 hover:bg-gold-400 text-cellar-900 font-semibold px-6 py-3 rounded-xl text-sm transition-all shadow-lg" id="hero-cta-wines">
+          Explore Cuvées
+        </a>
+        <button onclick="openTastingModal()" class="border border-stone-600 hover:border-white text-white font-medium px-6 py-3 rounded-xl text-sm transition-all backdrop-blur-sm" id="hero-cta-visit">
+          Book Cellar Tasting
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-gold-600 font-bold" id="cat-eyebrow">Direct Cellar Release</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-cellar-900 mt-1" id="cat-title">The Estate Collection</h2>
+      </div>
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap gap-2" id="filter-tabs">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Rendered by JS -->
+    </div>
+  </main>
+
+  <!-- Cellar Tasting Experience Section -->
+  <section id="tasting" class="bg-cellar-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="text-xs uppercase tracking-widest text-gold-400 font-bold" id="tasting-eyebrow">Private Visits</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold" id="tasting-heading">Experience Our Historic Cellars</h2>
+        <p class="text-stone-300 text-sm sm:text-base leading-relaxed" id="tasting-p1">
+          Descend into our 18th-century cellars carved directly into the chalk. Meet Alexandre, discover the artisanal disgorgement process, and enjoy a tutored tasting of 4 rare cuvées paired with regional cheeses.
+        </p>
+        <div class="grid grid-cols-2 gap-4 text-xs">
+          <div class="border border-cellar-700 p-3 rounded-xl">
+            <span class="block text-gold-400 font-bold text-base">1h 30m</span>
+            <span class="text-stone-400" id="tasting-dur">Guided Cellar Tour & Tasting</span>
+          </div>
+          <div class="border border-cellar-700 p-3 rounded-xl">
+            <span class="block text-gold-400 font-bold text-base">€ 35 / Person</span>
+            <span class="text-stone-400" id="tasting-price-lbl">Includes 4 Rare Cuvées</span>
+          </div>
+        </div>
+        <button onclick="openTastingModal()" class="bg-gold-500 hover:bg-gold-400 text-cellar-900 font-semibold px-6 py-3 rounded-xl text-sm transition-all" id="tasting-btn">
+          Reserve Tasting Slot
+        </button>
+      </div>
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-cellar-700 h-96">
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Cellar Tasting" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry / Order Drawer -->
+  <div id="inquiry-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex justify-end">
+    <div class="bg-white w-full max-w-lg h-full shadow-2xl flex flex-col overflow-y-auto" id="inquiry-panel">
+      <div class="p-6 border-b border-stone-200 flex items-center justify-between sticky top-0 bg-white z-10">
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-cellar-900" id="inquiry-drawer-title">Bottle Allocation Inquiry</h3>
+          <p class="text-xs text-stone-500" id="inquiry-drawer-sub">Direct shipment & quote request to the estate</p>
+        </div>
+        <button onclick="closeInquiryDrawer()" class="text-stone-400 hover:text-stone-800 p-2 text-2xl font-bold">&times;</button>
+      </div>
+
+      <div class="p-6 space-y-6 flex-1">
+        <div id="inquiry-items-container" class="space-y-3">
+          <!-- Populated by JS -->
+        </div>
+
+        <form id="inquiry-form" class="space-y-4 pt-4 border-t border-stone-200">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900" id="inquiry-form-title">Shipping & Contact Details</h4>
+          <div class="grid grid-cols-2 gap-3">
+            <input type="text" id="inq-fname" required placeholder="First Name" class="bg-stone-50 border border-stone-200 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+            <input type="text" id="inq-lname" required placeholder="Last Name" class="bg-stone-50 border border-stone-200 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+          </div>
+          <input type="email" id="inq-email" required placeholder="Email Address" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+          <input type="text" id="inq-country" required placeholder="Delivery Country / City (e.g. France, UK, USA)" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+          <textarea id="inq-msg" rows="2" placeholder="Custom delivery notes or inquiry questions..." class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-gold-500 focus:outline-none"></textarea>
+
+          <div class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs flex justify-between font-bold text-cellar-900">
+            <span id="est-total-label">Estimated Bottles Subtotal:</span>
+            <span id="inquiry-total-val" class="text-gold-600 font-serif text-sm">€ 0.00</span>
+          </div>
+
+          <button type="submit" class="w-full bg-cellar-900 hover:bg-black text-white font-medium py-3 rounded-xl text-xs shadow-lg transition-all" id="submit-inquiry-btn">
+            Send Direct Order Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tasting Reservation Modal -->
+  <div id="tasting-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl border border-stone-200 space-y-4">
+      <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+        <h3 class="font-serif text-2xl font-bold text-cellar-900">Book a Cellar Visit</h3>
+        <button onclick="closeTastingModal()" class="text-stone-400 hover:text-stone-800 text-xl font-bold">&times;</button>
+      </div>
+      <form id="tasting-form" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold mb-1">Select Date</label>
+          <input type="date" id="tasting-date" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Time Slot</label>
+          <select id="tasting-slot" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 focus:ring-2 focus:ring-gold-500 focus:outline-none">
+            <option>10:30 AM (Morning Discovery)</option>
+            <option>02:30 PM (Afternoon Masterclass)</option>
+            <option>05:00 PM (Sunset Cellar Tour)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Guests</label>
+          <select id="tasting-guests" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 focus:ring-2 focus:ring-gold-500 focus:outline-none">
+            <option value="1">1 Person (€35)</option>
+            <option value="2" selected>2 Persons (€70)</option>
+            <option value="4">4 Persons (€140)</option>
+            <option value="6">Private Group (6+ Persons)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Name & Email</label>
+          <input type="text" id="t-name" required placeholder="Your full name" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 mb-2 focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+          <input type="email" id="t-email" required placeholder="Your email address" class="w-full bg-stone-50 border border-stone-200 rounded-lg p-2.5 focus:ring-2 focus:ring-gold-500 focus:outline-none" />
+        </div>
+        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-400 text-cellar-900 font-bold py-3 rounded-xl shadow transition-all">
+          Confirm Tasting Appointment
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-cellar-900 text-white px-4 py-3 rounded-xl shadow-2xl text-xs border border-gold-500/50 flex items-center space-x-3 hidden">
+    <span id="toast-msg">Added to allocation inquiry</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-cellar-900 text-stone-400 text-xs py-10 px-4 border-t border-cellar-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="text-stone-300 font-serif text-sm">Domaine Val-d'Or • Vigneron Indépendant</p>
+        <p class="mt-0.5">Pierry / Épernay, Champagne, France</p>
+      </div>
+      <div class="text-stone-500">
+        © 2026 Interactive Showcase Prototype • Built with instant multilingual support.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript & Content Dictionary -->
+  <script>
+    const I18N = {
+      EN: {
+        banner: "✨ <strong>Domaine Prototype:</strong> Multilingual Artisan Catalog & Private Tasting Booking",
+        navSubtitle: "Independent Winemaker • Épernay",
+        navWines: "Our Cuvées",
+        navTerroir: "The Terroir",
+        navVisit: "Cellar Visits",
+        navInquiryBtn: "Inquiry Drawer",
+        heroBadge: "4th Generation Artisanal Winemaking • High Environmental Value (HVE)",
+        heroTitle: "The Pure Expression of Grand Cru Terroir",
+        heroDesc: "Hand-harvested, aged on natural lees in our historic chalk cellars. Explore our collection of artisanal cuvées and book a private tasting with the winemaker.",
+        heroCtaWines: "Explore Cuvées",
+        heroCtaVisit: "Book Cellar Tasting",
+        catEyebrow: "Direct Cellar Release",
+        catTitle: "The Estate Collection",
+        tastingEyebrow: "Private Visits",
+        tastingHeading: "Experience Our Historic Cellars",
+        tastingP1: "Descend into our 18th-century cellars carved directly into the chalk. Meet Alexandre, discover the artisanal disgorgement process, and enjoy a tutored tasting of 4 rare cuvées paired with regional cheeses.",
+        tastingDur: "Guided Cellar Tour & Tasting",
+        tastingPriceLbl: "Includes 4 Rare Cuvées",
+        tastingBtn: "Reserve Tasting Slot",
+        inquiryDrawerTitle: "Bottle Allocation Inquiry",
+        inquiryDrawerSub: "Direct shipment & quote request to the estate",
+        inquiryFormTitle: "Shipping & Contact Details",
+        submitInquiryBtn: "Send Direct Order Request",
+        estTotalLabel: "Estimated Subtotal:",
+        categories: { all: "All Cuvées", brut: "Brut & Nature", rose: "Rosé Prestige", millesime: "Vintage & Reserve" }
+      },
+      FR: {
+        banner: "✨ <strong>Prototype Domaine :</strong> Catalogue Artisanal Bilingue & Réservation de Dégustation",
+        navSubtitle: "Vigneron Indépendant • Épernay",
+        navWines: "Nos Cuvées",
+        navTerroir: "Le Terroir",
+        navVisit: "Visites & Caves",
+        navInquiryBtn: "Panier Devis",
+        heroBadge: "Viticulture Familiale 4e Génération • Haute Valeur Environnementale (HVE)",
+        heroTitle: "L'Expression Pure d'un Terroir Grand Cru",
+        heroDesc: "Vendanges manuelles, élevage sur lies dans nos caves de craie historiques. Découvrez nos cuvées de caractère et réservez votre dégustation avec le vigneron.",
+        heroCtaWines: "Découvrir les Cuvées",
+        heroCtaVisit: "Réserver une Visite",
+        catEyebrow: "En Direct de la Propriété",
+        catTitle: "La Collection du Domaine",
+        tastingEyebrow: "Visites Privées",
+        tastingHeading: "Visitez Nos Caves Historiques",
+        tastingP1: "Descendez au cœur de nos caves du XVIIIe siècle taillées dans la craie. Rencontrez Alexandre, découvrez l'art du dégorgement artisanal et profitez d'une dégustation commentée de 4 cuvées d'exception.",
+        tastingDur: "Visite guidée et dégustation",
+        tastingPriceLbl: "Inclut 4 cuvées de dégustation",
+        tastingBtn: "Réserver un Créneau",
+        inquiryDrawerTitle: "Demande d'Allocation de Bouteilles",
+        inquiryDrawerSub: "Expédition directe & devis auprès du domaine",
+        inquiryFormTitle: "Coordonnées et Livraison",
+        submitInquiryBtn: "Envoyer la Demande de Commande",
+        estTotalLabel: "Sous-total Estimé :",
+        categories: { all: "Toutes les Cuvées", brut: "Brut & Nature", rose: "Rosé Prestige", millesime: "Millésimes & Réserves" }
+      }
+    };
+
+    const PRODUCTS = [
+      {
+        id: "cuvee-brut-reserve",
+        category: "brut",
+        name: "Cuvée Réserve Brut Grand Cru",
+        nameFR: "Cuvée Réserve Brut Grand Cru",
+        vintage: "NV (Base 2021)",
+        blend: "60% Pinot Noir, 40% Chardonnay",
+        dosage: "Dosage: 5g/L (Extra Brut)",
+        awards: "Gold Medal • 94 Pts Decanter",
+        descEN: "Vibrant golden hues with notes of brioche, crisp green apple, and white blossom. 36 months aging on lees.",
+        descFR: "Robe or éclatante aux arômes de brioche, pomme fraîche et fleurs blanches. Élevage 36 mois sur lies.",
+        price: 38.00,
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: "cuvee-rose-saignee",
+        category: "rose",
+        name: "Rosé de Saignée Premier Cru",
+        nameFR: "Rosé de Saignée Premier Cru",
+        vintage: "2020 Vintage",
+        blend: "100% Pinot Noir",
+        dosage: "Dosage: 4g/L",
+        awards: "Top 10 Rosé Champagnes",
+        descEN: "Deep ruby elegance bursting with wild strawberries, redcurrant, and subtle smoky mineral undertones.",
+        descFR: "Élégante robe rubis aux notes de fraises des bois, groseilles et nuances minérales délicatement fumées.",
+        price: 46.00,
+        image: "https://images.unsplash.com/photo-1569919659476-f0852f6834b7?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        id: "cuvee-millesime-2015",
+        category: "millesime",
+        name: "Cuvée Millésime 2015 'Vieilles Vignes'",
+        nameFR: "Cuvée Millésime 2015 'Vieilles Vignes'",
+        vintage: "2015 Single Harvest",
+        blend: "70% Chardonnay, 30% Pinot Noir",
+        dosage: "Dosage: 2g/L (Nature)",
+        awards: "96 Pts Wine Spectator",
+        descEN: "Crafted exclusively from 60-year-old vines. Rich hazelnuts, candied citrus, and saline mineral finish.",
+        descFR: "Issu exclusivement de vignes de 60 ans. Notes de noisette grillée, agrumes confits et finale saline.",
+        price: 68.00,
+        image: "https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    let currentLang = "FR";
+    let activeFilter = "all";
+    let inquiryCart = {};
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.getElementById('lang-fr').className = lang === 'FR' ? "px-2 py-0.5 rounded text-xs font-semibold bg-gold-600 text-white" : "px-2 py-0.5 rounded text-xs font-semibold text-stone-400 hover:text-white";
+      document.getElementById('lang-en').className = lang === 'EN' ? "px-2 py-0.5 rounded text-xs font-semibold bg-gold-600 text-white" : "px-2 py-0.5 rounded text-xs font-semibold text-stone-400 hover:text-white";
+
+      const texts = I18N[lang];
+      document.getElementById('banner-text').innerHTML = texts.banner;
+      document.getElementById('nav-subtitle').innerText = texts.navSubtitle;
+      document.getElementById('nav-wines').innerText = texts.navWines;
+      document.getElementById('nav-terroir').innerText = texts.navTerroir;
+      document.getElementById('nav-visit').innerText = texts.navVisit;
+      document.getElementById('nav-inquiry-btn').innerText = texts.navInquiryBtn;
+      document.getElementById('hero-badge').innerText = texts.heroBadge;
+      document.getElementById('hero-title').innerText = texts.heroTitle;
+      document.getElementById('hero-desc').innerText = texts.heroDesc;
+      document.getElementById('hero-cta-wines').innerText = texts.heroCtaWines;
+      document.getElementById('hero-cta-visit').innerText = texts.heroCtaVisit;
+      document.getElementById('cat-eyebrow').innerText = texts.catEyebrow;
+      document.getElementById('cat-title').innerText = texts.catTitle;
+      document.getElementById('tasting-eyebrow').innerText = texts.tastingEyebrow;
+      document.getElementById('tasting-heading').innerText = texts.tastingHeading;
+      document.getElementById('tasting-p1').innerText = texts.tastingP1;
+      document.getElementById('tasting-dur').innerText = texts.tastingDur;
+      document.getElementById('tasting-price-lbl').innerText = texts.tastingPriceLbl;
+      document.getElementById('tasting-btn').innerText = texts.tastingBtn;
+      document.getElementById('inquiry-drawer-title').innerText = texts.inquiryDrawerTitle;
+      document.getElementById('inquiry-drawer-sub').innerText = texts.inquiryDrawerSub;
+      document.getElementById('inquiry-form-title').innerText = texts.inquiryFormTitle;
+      document.getElementById('submit-inquiry-btn').innerText = texts.submitInquiryBtn;
+      document.getElementById('est-total-label').innerText = texts.estTotalLabel;
+
+      renderFilters();
+      renderProducts();
+      renderInquiryCart();
+    }
+
+    function renderFilters() {
+      const container = document.getElementById('filter-tabs');
+      const cats = I18N[currentLang].categories;
+      container.innerHTML = Object.keys(cats).map(key => {
+        const isActive = activeFilter === key;
+        return `
+          <button onclick="setFilter('${key}')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            isActive ? 'bg-gold-500 text-cellar-900 shadow' : 'bg-stone-200/70 text-stone-700 hover:bg-stone-300'
+          }">
+            ${cats[key]}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function setFilter(cat) {
+      activeFilter = cat;
+      renderFilters();
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('products-grid');
+      const filtered = activeFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === activeFilter);
+      
+      container.innerHTML = filtered.map(product => {
+        const desc = currentLang === 'FR' ? product.descFR : product.descEN;
+        const name = currentLang === 'FR' ? product.nameFR : product.name;
+        const qtyInCart = inquiryCart[product.id] || 0;
+
+        return `
+          <div class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="relative h-64 bg-cellar-900 overflow-hidden">
+                <img src="${product.image}" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-500" />
+                <div class="absolute top-3 left-3 bg-gold-500/90 backdrop-blur-md text-cellar-900 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  ${product.awards}
+                </div>
+              </div>
+              <div class="p-6 space-y-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <span class="text-[11px] font-semibold text-gold-600 uppercase tracking-widest">${product.vintage}</span>
+                    <h3 class="font-serif text-2xl font-bold text-cellar-900 mt-0.5">${name}</h3>
+                  </div>
+                  <span class="font-serif text-2xl font-bold text-cellar-900">€ ${product.price.toFixed(2)}</span>
+                </div>
+                <div class="text-[11px] text-stone-500 space-x-2 font-medium">
+                  <span>${product.blend}</span> • <span>${product.dosage}</span>
+                </div>
+                <p class="text-xs text-stone-600 leading-relaxed">${desc}</p>
+              </div>
+            </div>
+            <div class="p-6 pt-0">
+              <button onclick="addToInquiry('${product.id}')" class="w-full bg-cellar-900 hover:bg-gold-500 hover:text-cellar-900 text-white text-xs font-semibold py-2.5 rounded-xl shadow transition-all flex items-center justify-center space-x-2">
+                <span>${currentLang === 'FR' ? 'Ajouter à la Demande' : 'Add to Order Inquiry'}</span>
+                ${qtyInCart > 0 ? `<span class="bg-gold-500 text-cellar-900 px-1.5 py-0.2 rounded-full font-bold">(${qtyInCart})</span>` : ''}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addToInquiry(id) {
+      inquiryCart[id] = (inquiryCart[id] || 0) + 1;
+      updateCartCount();
+      renderProducts();
+      showToast(currentLang === 'FR' ? 'Bouteille ajoutée à votre demande' : 'Bottle added to inquiry drawer');
+    }
+
+    function updateCartCount() {
+      const count = Object.values(inquiryCart).reduce((a, b) => a + b, 0);
+      document.getElementById('cart-count').innerText = count;
+    }
+
+    function openInquiryDrawer() {
+      renderInquiryCart();
+      document.getElementById('inquiry-modal').classList.remove('hidden');
+    }
+
+    function closeInquiryDrawer() {
+      document.getElementById('inquiry-modal').classList.add('hidden');
+    }
+
+    function renderInquiryCart() {
+      const container = document.getElementById('inquiry-items-container');
+      const keys = Object.keys(inquiryCart);
+      let total = 0;
+
+      if (keys.length === 0) {
+        container.innerHTML = `<p class="text-xs text-stone-400 text-center py-6">${currentLang === 'FR' ? 'Aucune cuvée sélectionnée pour l\'instant.' : 'No bottles added yet. Select cuvées to request allocation.'}</p>`;
+        document.getElementById('inquiry-total-val').innerText = "€ 0.00";
+        return;
+      }
+
+      container.innerHTML = keys.map(id => {
+        const p = PRODUCTS.find(prod => prod.id === id);
+        const qty = inquiryCart[id];
+        const sub = p.price * qty;
+        total += sub;
+        return `
+          <div class="flex items-center justify-between p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs">
+            <div>
+              <span class="font-bold text-stone-900">${currentLang === 'FR' ? p.nameFR : p.name}</span>
+              <p class="text-[11px] text-stone-500">€ ${p.price.toFixed(2)} × ${qty}</p>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="font-serif font-bold text-stone-900">€ ${sub.toFixed(2)}</span>
+              <button onclick="removeItem('${id}')" class="text-red-500 hover:text-red-700 font-bold ml-2">&times;</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('inquiry-total-val').innerText = `€ ${total.toFixed(2)}`;
+    }
+
+    function removeItem(id) {
+      delete inquiryCart[id];
+      updateCartCount();
+      renderInquiryCart();
+      renderProducts();
+    }
+
+    function openTastingModal() {
+      const today = new Date();
+      today.setDate(today.getDate() + 3);
+      document.getElementById('tasting-date').value = today.toISOString().split('T')[0];
+      document.getElementById('tasting-modal').classList.remove('hidden');
+    }
+
+    function closeTastingModal() {
+      document.getElementById('tasting-modal').classList.add('hidden');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 2500);
+    }
+
+    // Handlers
+    document.getElementById('inquiry-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeInquiryDrawer();
+      showToast(currentLang === 'FR' ? 'Votre demande a été transmise au domaine avec succès !' : 'Order request sent successfully to the estate!');
+      inquiryCart = {};
+      updateCartCount();
+      renderProducts();
+    });
+
+    document.getElementById('tasting-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      closeTastingModal();
+      showToast(currentLang === 'FR' ? 'Créneau de dégustation réservé avec succès !' : 'Tasting slot confirmed successfully!');
+    });
+
+    // Default Init in French
+    setLanguage('FR');
+  </script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Direct Booking & Reservation Engine</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fbf8f3',
+              100: '#f5efe4',
+              200: '#ebdcc5',
+              500: '#b89058',
+              600: '#9e7542',
+              800: '#2b231c',
+              900: '#1a1410',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-brand-50 text-stone-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Demo Notice Banner -->
+  <div class="bg-stone-900 text-stone-300 text-xs py-1.5 px-4 text-center border-b border-stone-800 flex justify-between items-center max-w-7xl mx-auto">
+    <span>✨ <strong>Interactive Client Demo:</strong> Direct Booking Engine (No Third-Party Commissions)</span>
+    <span class="hidden sm:inline text-stone-400">Easily customizable for B&Bs, Wineries & Guides</span>
+  </div>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-stone-200/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-brand-800 text-brand-200 flex items-center justify-center font-serif text-xl font-bold shadow-inner">
+          L
+        </div>
+        <div>
+          <span class="font-serif text-xl font-semibold text-stone-900 tracking-wide block leading-tight" id="brand-name">Les Bastides du Lac</span>
+          <span class="text-[10px] uppercase tracking-widest text-brand-600 block">Boutique Estate & Suites</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
+        <a href="#suites" class="hover:text-brand-600 transition-colors">Suites & Rooms</a>
+        <a href="#experiences" class="hover:text-brand-600 transition-colors">Experiences</a>
+        <a href="#reviews" class="hover:text-brand-600 transition-colors">Reviews</a>
+        <a href="#location" class="hover:text-brand-600 transition-colors">Location</a>
+      </nav>
+
+      <div class="flex items-center space-x-3">
+        <select id="currency-select" class="bg-white border border-stone-200 text-xs rounded-lg px-2.5 py-1.5 text-stone-700 font-medium focus:outline-none focus:ring-1 focus:ring-brand-500">
+          <option value="EUR">€ EUR</option>
+          <option value="USD">$ USD</option>
+          <option value="INR">₹ INR</option>
+          <option value="GBP">£ GBP</option>
+        </select>
+        <a href="#booking-section" class="bg-brand-800 hover:bg-stone-900 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-lg shadow-sm transition-all">
+          Book Direct
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative bg-stone-900 text-white py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/60 to-transparent z-0"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-medium text-brand-200 border border-white/10">
+        <span>★ 4.98 Rated on Google & Direct</span>
+        <span>•</span>
+        <span>Best Rate Guaranteed</span>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white">
+        Authentic Elegance in the Heart of the Region
+      </h1>
+      <p class="text-base sm:text-lg text-stone-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Experience tranquil luxury, private vineyard tastings, and bespoke hospitality. Book direct for complimentary welcome champagne and flexible check-in.
+      </p>
+    </div>
+
+    <!-- Interactive Search / Filter Widget -->
+    <div id="booking-section" class="relative z-10 max-w-5xl mx-auto mt-12 bg-white rounded-2xl p-4 sm:p-6 shadow-2xl border border-stone-100 text-stone-800">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1.5">Check-in</label>
+          <input type="date" id="checkin-date" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1.5">Check-out</label>
+          <input type="date" id="checkout-date" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-1.5">Guests</label>
+          <select id="guest-count" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5+ Guests (Private Wing)</option>
+          </select>
+        </div>
+        <div>
+          <button id="search-btn" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm py-2.5 rounded-xl transition-all shadow-md flex items-center justify-center space-x-2">
+            <span>Check Availability</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Direct Booking Benefit Badges -->
+  <section class="border-b border-stone-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="flex items-center justify-center space-x-2 text-stone-700 text-xs sm:text-sm font-medium">
+          <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Best Price Guarantee</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2 text-stone-700 text-xs sm:text-sm font-medium">
+          <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Free Cancellation (48h)</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2 text-stone-700 text-xs sm:text-sm font-medium">
+          <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18z"/></svg>
+          <span>Welcome Champagne</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2 text-stone-700 text-xs sm:text-sm font-medium">
+          <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>Instant Direct Confirmation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Suites & Rooms Catalog -->
+  <main id="suites" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-brand-600 font-semibold">Accommodations</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Available Suites & Packages</h2>
+      </div>
+      <p class="text-sm text-stone-500 mt-2 md:mt-0 max-w-md">
+        Select a suite to view real-time pricing breakdown and optional bespoke add-ons.
+      </p>
+    </div>
+
+    <!-- Rooms Grid -->
+    <div id="rooms-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Injected by JavaScript -->
+    </div>
+  </main>
+
+  <!-- Booking Checkout Drawer Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm hidden flex justify-end">
+    <div class="bg-white w-full max-w-xl h-full shadow-2xl flex flex-col overflow-y-auto transform transition-transform duration-300 translate-x-full" id="drawer-panel">
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-stone-200 flex items-center justify-between sticky top-0 bg-white z-10">
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-stone-900">Complete Your Reservation</h3>
+          <p class="text-xs text-stone-500 mt-0.5">Instant booking directly with the estate</p>
+        </div>
+        <button id="close-drawer-btn" class="text-stone-400 hover:text-stone-700 p-2 rounded-lg text-xl font-bold">&times;</button>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="p-6 space-y-6 flex-1">
+        <!-- Selected Suite Summary -->
+        <div class="bg-stone-50 p-4 rounded-xl border border-stone-200/80 flex items-center space-x-4" id="summary-card">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Add-on Experiences -->
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-stone-900 mb-3">Enhance Your Stay</h4>
+          <div class="space-y-2.5" id="addons-container">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Guest Details Form -->
+        <form id="reservation-form" class="space-y-4">
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-stone-900">Guest Information</h4>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-stone-600 mb-1">First Name *</label>
+              <input type="text" id="guest-first-name" required placeholder="Jean" class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-stone-600 mb-1">Last Name *</label>
+              <input type="text" id="guest-last-name" required placeholder="Dupont" class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-stone-600 mb-1">Email Address *</label>
+            <input type="email" id="guest-email" required placeholder="jean.dupont@example.com" class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-stone-600 mb-1">WhatsApp / Phone Number</label>
+            <input type="tel" id="guest-phone" placeholder="+33 6 12 34 56 78" class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-stone-600 mb-1">Special Requests or Arrival Notes</label>
+            <textarea id="guest-notes" rows="2" placeholder="Dietary preferences, estimated arrival time, etc." class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+          </div>
+
+          <!-- Price Breakdown -->
+          <div class="border-t border-stone-200 pt-4 space-y-2 text-sm">
+            <div class="flex justify-between text-stone-600">
+              <span id="rate-calc-label">Base Rate (2 Nights)</span>
+              <span id="rate-calc-val">€ 420.00</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span>Selected Add-ons</span>
+              <span id="addons-calc-val">€ 0.00</span>
+            </div>
+            <div class="flex justify-between text-stone-600">
+              <span>Local Tourist Tax & Service</span>
+              <span id="tax-calc-val">€ 12.00</span>
+            </div>
+            <div class="border-t border-stone-200 pt-2 flex justify-between font-bold text-base text-stone-900">
+              <span>Total Price</span>
+              <span id="total-calc-val" class="text-brand-600 text-lg">€ 432.00</span>
+            </div>
+          </div>
+
+          <button type="submit" class="w-full bg-brand-800 hover:bg-stone-900 text-white font-medium py-3 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center space-x-2">
+            <span>Confirm Direct Booking</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </button>
+          <p class="text-[11px] text-center text-stone-400">No payment charged right now. Pay on arrival or via secure link.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Confirmation Modal -->
+  <div id="success-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-white max-w-lg w-full rounded-2xl p-8 text-center space-y-6 shadow-2xl border border-stone-100">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+        ✓
+      </div>
+      <div>
+        <span class="text-xs uppercase tracking-widest text-emerald-600 font-bold block mb-1">Reservation Confirmed!</span>
+        <h3 class="font-serif text-3xl font-bold text-stone-900">Thank You, <span id="confirmed-guest-name">Guest</span>!</h3>
+        <p class="text-sm text-stone-600 mt-2">
+          Your booking confirmation reference is <strong class="text-stone-900" id="booking-ref">#LBL-88219</strong>. A direct confirmation email has been dispatched.
+        </p>
+      </div>
+
+      <div class="bg-stone-50 p-4 rounded-xl text-left text-xs space-y-2 border border-stone-200 text-stone-700">
+        <div class="flex justify-between"><strong>Suite:</strong> <span id="conf-suite-name">Panorama Alpine Suite</span></div>
+        <div class="flex justify-between"><strong>Dates:</strong> <span id="conf-dates">Sep 10 - Sep 12, 2026 (2 Nights)</span></div>
+        <div class="flex justify-between"><strong>Total:</strong> <span id="conf-total" class="text-brand-600 font-bold">€ 432.00</span></div>
+      </div>
+
+      <button id="close-success-btn" class="w-full bg-stone-900 text-white text-sm font-medium py-3 rounded-xl hover:bg-stone-800 transition-all">
+        Back to Website
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-stone-400 text-xs py-12 px-4 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="text-stone-300 font-serif text-sm">Les Bastides du Lac • Direct Booking Engine</p>
+        <p class="mt-1">Designed and developed for boutique hospitality businesses.</p>
+      </div>
+      <div class="text-stone-500">
+        © 2026 Interactive Portfolio Prototype. Built for fast deployment.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Logic & Configuration -->
+  <script>
+    // Configuration Data: Replace this JSON for any client
+    const CONFIG = {
+      brandName: "Les Bastides du Lac",
+      currencyRate: { EUR: 1, USD: 1.08, INR: 91, GBP: 0.85 },
+      currencySymbol: { EUR: "€", USD: "$", INR: "₹", GBP: "£" },
+      currentCurrency: "EUR",
+      rooms: [
+        {
+          id: "suite-1",
+          title: "Panorama Alpine Suite",
+          type: "Master Suite with Lake & Mountain Balcony",
+          priceEUR: 210,
+          capacity: "2-3 Guests",
+          size: "48 m²",
+          image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
+          amenities: ["King Bed", "Private Terrace", "Rain Shower & Tub", "Espresso Machine", "Fiber Wi-Fi"]
+        },
+        {
+          id: "suite-2",
+          title: "Vineyard Garden Cottage",
+          type: "Independent Stone Cottage amidst Vines",
+          priceEUR: 260,
+          capacity: "2-4 Guests",
+          size: "65 m²",
+          image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+          amenities: ["Private Garden", "Fireplace", "Kitchenette", "Hot Tub Access", "Wine Cellar Fridge"]
+        },
+        {
+          id: "suite-3",
+          title: "The Heritage Loft",
+          type: "Exposed Beams with Contemporary French Decor",
+          priceEUR: 175,
+          capacity: "2 Guests",
+          size: "38 m²",
+          image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80",
+          amenities: ["Queen Bed", "Skylight Views", "Artisan Bath Products", "Work Desk", "Complimentary Tea Bar"]
+        }
+      ],
+      addons: [
+        { id: "addon-tasting", name: "Sommelier Cellar Tasting for Two", priceEUR: 45 },
+        { id: "addon-breakfast", name: "Gourmet Terroir Breakfast Basket (Daily)", priceEUR: 20 },
+        { id: "addon-kayak", name: "Private Kayak & Lake Gear Pass (Full Day)", priceEUR: 35 }
+      ]
+    };
+
+    let state = {
+      selectedRoom: CONFIG.rooms[0],
+      selectedAddons: [],
+      checkin: "",
+      checkout: "",
+      nights: 2,
+      currency: "EUR"
+    };
+
+    // Initialize Default Dates
+    const today = new Date();
+    const checkinDef = new Date(today);
+    checkinDef.setDate(today.getDate() + 7);
+    const checkoutDef = new Date(today);
+    checkoutDef.setDate(today.getDate() + 9);
+
+    document.getElementById('checkin-date').value = checkinDef.toISOString().split('T')[0];
+    document.getElementById('checkout-date').value = checkoutDef.toISOString().split('T')[0];
+    state.checkin = document.getElementById('checkin-date').value;
+    state.checkout = document.getElementById('checkout-date').value;
+
+    function formatPrice(eurAmount) {
+      const rate = CONFIG.currencyRate[state.currency];
+      const sym = CONFIG.currencySymbol[state.currency];
+      const converted = Math.round(eurAmount * rate);
+      return `${sym} ${converted.toLocaleString()}`;
+    }
+
+    function renderRooms() {
+      const container = document.getElementById('rooms-container');
+      container.innerHTML = CONFIG.rooms.map(room => `
+        <div class="bg-white rounded-2xl overflow-hidden border border-stone-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+          <div class="relative h-64 overflow-hidden group">
+            <img src="${room.image}" alt="${room.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-3 right-3 bg-stone-900/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+              ${room.size} • ${room.capacity}
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-brand-600">${room.type}</span>
+              <h3 class="font-serif text-2xl font-bold text-stone-900 mt-1">${room.title}</h3>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                ${room.amenities.map(a => `<span class="bg-stone-100 text-stone-600 text-[11px] px-2 py-0.5 rounded-md">${a}</span>`).join('')}
+              </div>
+            </div>
+            <div class="border-t border-stone-100 pt-4 flex items-center justify-between">
+              <div>
+                <span class="text-xs text-stone-500 block">Direct Rate / Night</span>
+                <span class="font-serif text-2xl font-bold text-stone-900">${formatPrice(room.priceEUR)}</span>
+              </div>
+              <button onclick="openBookingDrawer('${room.id}')" class="bg-brand-800 hover:bg-stone-900 text-white text-xs font-semibold px-5 py-2.5 rounded-xl shadow transition-all">
+                Select Suite
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openBookingDrawer(roomId) {
+      state.selectedRoom = CONFIG.rooms.find(r => r.id === roomId) || CONFIG.rooms[0];
+      
+      // Update Summary Card
+      document.getElementById('summary-card').innerHTML = `
+        <img src="${state.selectedRoom.image}" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h5 class="font-serif font-bold text-stone-900 text-base">${state.selectedRoom.title}</h5>
+          <p class="text-xs text-stone-500">${state.nights} Nights (${state.checkin} to ${state.checkout})</p>
+          <p class="text-xs font-semibold text-brand-600 mt-1">${formatPrice(state.selectedRoom.priceEUR)} / night</p>
+        </div>
+      `;
+
+      // Render Addons
+      document.getElementById('addons-container').innerHTML = CONFIG.addons.map(addon => {
+        const isChecked = state.selectedAddons.includes(addon.id) ? "checked" : "";
+        return `
+          <label class="flex items-center justify-between p-3 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-100/70 transition-colors">
+            <div class="flex items-center space-x-3">
+              <input type="checkbox" value="${addon.id}" ${isChecked} onchange="toggleAddon('${addon.id}')" class="w-4 h-4 text-brand-600 rounded focus:ring-brand-500" />
+              <span class="text-xs font-medium text-stone-800">${addon.name}</span>
+            </div>
+            <span class="text-xs font-bold text-stone-700">+${formatPrice(addon.priceEUR)}</span>
+          </label>
+        `;
+      }).join('');
+
+      calculateTotal();
+
+      const modal = document.getElementById('checkout-modal');
+      const panel = document.getElementById('drawer-panel');
+      modal.classList.remove('hidden');
+      setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+    }
+
+    function closeBookingDrawer() {
+      const modal = document.getElementById('checkout-modal');
+      const panel = document.getElementById('drawer-panel');
+      panel.classList.add('translate-x-full');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+
+    function toggleAddon(addonId) {
+      if (state.selectedAddons.includes(addonId)) {
+        state.selectedAddons = state.selectedAddons.filter(id => id !== addonId);
+      } else {
+        state.selectedAddons.push(addonId);
+      }
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const inDate = new Date(document.getElementById('checkin-date').value);
+      const outDate = new Date(document.getElementById('checkout-date').value);
+      const diffTime = Math.abs(outDate - inDate);
+      state.nights = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24))) || 2;
+
+      const baseEUR = state.selectedRoom.priceEUR * state.nights;
+      const addonsEUR = state.selectedAddons.reduce((acc, id) => {
+        const item = CONFIG.addons.find(a => a.id === id);
+        return acc + (item ? item.priceEUR : 0);
+      }, 0);
+      const taxEUR = 6 * state.nights;
+      const totalEUR = baseEUR + addonsEUR + taxEUR;
+
+      document.getElementById('rate-calc-label').innerText = `Base Rate (${state.nights} Night${state.nights > 1 ? 's' : ''})`;
+      document.getElementById('rate-calc-val').innerText = formatPrice(baseEUR);
+      document.getElementById('addons-calc-val').innerText = formatPrice(addonsEUR);
+      document.getElementById('tax-calc-val').innerText = formatPrice(taxEUR);
+      document.getElementById('total-calc-val').innerText = formatPrice(totalEUR);
+
+      return totalEUR;
+    }
+
+    // Event Listeners
+    document.getElementById('currency-select').addEventListener('change', (e) => {
+      state.currency = e.target.value;
+      renderRooms();
+      calculateTotal();
+    });
+
+    document.getElementById('checkin-date').addEventListener('change', () => {
+      state.checkin = document.getElementById('checkin-date').value;
+      calculateTotal();
+    });
+
+    document.getElementById('checkout-date').addEventListener('change', () => {
+      state.checkout = document.getElementById('checkout-date').value;
+      calculateTotal();
+    });
+
+    document.getElementById('search-btn').addEventListener('click', () => {
+      calculateTotal();
+      document.getElementById('suites').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('close-drawer-btn').addEventListener('click', closeBookingDrawer);
+
+    document.getElementById('reservation-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fname = document.getElementById('guest-first-name').value;
+      const lname = document.getElementById('guest-last-name').value;
+      const totalFormatted = document.getElementById('total-calc-val').innerText;
+
+      closeBookingDrawer();
+
+      document.getElementById('confirmed-guest-name').innerText = `${fname} ${lname}`;
+      document.getElementById('conf-suite-name').innerText = state.selectedRoom.title;
+      document.getElementById('conf-dates').innerText = `${state.checkin} to ${state.checkout} (${state.nights} Nights)`;
+      document.getElementById('conf-total').innerText = totalFormatted;
+      document.getElementById('booking-ref').innerText = `#LBL-${Math.floor(10000 + Math.random() * 90000)}`;
+
+      document.getElementById('success-modal').classList.remove('hidden');
+    });
+
+    document.getElementById('close-success-btn').addEventListener('click', () => {
+      document.getElementById('success-modal').classList.add('hidden');
+    });
+
+    // Initial Render
+    renderRooms();
+  </script>
+</body>
+</html>
