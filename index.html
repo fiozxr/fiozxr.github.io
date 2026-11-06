@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiozur Rahman — AI agents & security tools</title>
+<meta name="description" content="Fiozur Rahman (@fiozxr) builds AI agents, RAG systems, encryption tools and developer tooling. Selected work, contributions and links.">
+<meta property="og:title" content="Fiozur Rahman — AI agents & security tools">
+<meta property="og:description" content="AI engineering, cybersecurity & privacy, developer tooling. Selected work by @fiozxr.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+:root{--bg:#f3efe6;--fg:#111214;--mut:#5d5f63;--line:#d6d0c2;--acc:#0b7a43;--onacc:#fff;--gut:clamp(20px,5vw,72px);--ease:cubic-bezier(.2,.8,.2,1);
+--sans:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--ser:"Instrument Serif",Georgia,"Times New Roman",serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0c0e;--fg:#ece8df;--mut:#9a9da3;--line:#24262b;--acc:#c8f53c;--onacc:#0b0c0e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0c0e;--fg:#ece8df;--mut:#9a9da3;--line:#24262b;--acc:#c8f53c;--onacc:#0b0c0e;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+body{background:var(--bg);color:var(--fg);font:400 clamp(16px,1.1vw,18px)/1.55 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.ser{font-family:var(--ser);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.acc{color:var(--acc)}
+.wrap{padding-inline:var(--gut);max-width:1500px;margin-inline:auto}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gut);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .b{font-weight:700;letter-spacing:.02em}
+nav ul{display:flex;gap:clamp(14px,3vw,34px);list-style:none;padding:0;font-size:.9rem}
+nav ul a{color:var(--mut);transition:color .2s}nav ul a:hover{color:var(--fg)}
+.tools{display:flex;gap:10px;align-items:center}
+button.t{background:none;border:1px solid var(--line);color:var(--fg);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1rem}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.4em;border-radius:99px;font-weight:500;border:1px solid var(--fg);transition:transform .3s var(--ease),background .2s,color .2s}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
+.btn:hover{transform:translateY(-2px)}
+.btn:not(.p):hover{background:var(--fg);color:var(--bg)}
+@media(max-width:700px){nav ul{display:none}}
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,4vw,64px);align-items:end;padding-top:120px;padding-bottom:clamp(40px,7vh,90px)}
+.eye{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:22px;display:flex;gap:10px;align-items:center}
+.eye::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--acc)}
+h1{font-size:clamp(2.7rem,8.6vw,8.2rem);line-height:.92;letter-spacing:-.045em;font-weight:500}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .ln>span{display:block}
+.js h1 .ln>span{transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.js.ready h1 .ln>span{transform:none}
+.js.ready h1 .ln:nth-child(2)>span{transition-delay:.12s}.js.ready h1 .ln:nth-child(3)>span{transition-delay:.24s}
+.sub{max-width:34em;color:var(--mut);margin:28px 0 32px;font-size:clamp(1rem,1.35vw,1.2rem)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.ph{position:relative;aspect-ratio:4/5;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--fg) 7%,var(--bg)),var(--bg));transition:transform .5s var(--ease);will-change:transform}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph::after{content:"";position:absolute;inset:auto 0 0 0;height:30%;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);pointer-events:none}
+.ph figcaption{position:absolute;z-index:1;left:14px;right:14px;bottom:12px;display:flex;justify-content:space-between;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+  @media(max-width:860px){.hero{grid-template-columns:1fr;align-items:start}.ph{max-width:340px}}
+/* marquee */
+.mq{border-block:1px solid var(--line);overflow:hidden;padding:clamp(14px,2vw,26px) 0;white-space:nowrap}
+.mq div{display:inline-block;font-size:clamp(2.2rem,7vw,6rem);letter-spacing:-.04em;font-weight:500;will-change:transform}
+.mq i{font-family:var(--ser);color:var(--acc);padding:0 .35em}
+.mq .o{color:transparent;-webkit-text-stroke:1px var(--fg)}
+/* sections */
+section{padding-block:clamp(64px,12vh,150px)}
+.lab{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+h2{font-size:clamp(2.1rem,5.4vw,4.6rem);line-height:1;letter-spacing:-.04em;font-weight:500;max-width:14em}
+.cat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);padding-block:clamp(36px,7vh,80px);border-top:1px solid var(--line)}
+.cat:first-of-type{margin-top:clamp(36px,6vh,70px)}
+.cat header{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px);align-self:start}
+.cat .n{font-family:var(--ser);font-style:italic;color:var(--acc);font-size:1.4rem}
+.cat h3{font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:1.02;letter-spacing:-.035em;font-weight:500;margin:6px 0 10px}
+.cat header p{color:var(--mut);max-width:24em}
+.cat ul{list-style:none;padding:0}
+.cat li a{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:18px 0;border-bottom:1px solid var(--line);transition:padding .35s var(--ease),color .2s}
+.cat li:first-child a{padding-top:0}
+.cat li a b{font-size:clamp(1.15rem,1.8vw,1.5rem);font-weight:500;letter-spacing:-.02em}
+.cat li a span{grid-column:1;color:var(--mut);font-size:.95rem}
+.cat li a i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;color:var(--acc);transition:transform .35s var(--ease)}
+.cat li a:hover{padding-left:12px;color:var(--acc)}
+.cat li a:hover i{transform:translate(4px,-4px)}
+.tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:2px 9px;margin-left:8px;color:var(--mut);vertical-align:middle}
+.more{display:flex;flex-wrap:wrap;gap:10px}
+.more a{border:1px solid var(--line);border-radius:99px;padding:.5em 1.1em;transition:background .2s,color .2s,border-color .2s}
+.more a:hover{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+@media(max-width:860px){.cat{grid-template-columns:1fr}.cat header{position:static}}
+/* focus + proof */
+.fx{list-style:none;padding:0;margin-top:clamp(30px,6vh,60px)}
+.fx li{display:grid;grid-template-columns:70px 1fr;gap:6px 20px;align-items:baseline;padding:clamp(18px,3vh,34px) 0;border-top:1px solid var(--line)}
+.fx li:last-child{border-bottom:1px solid var(--line)}
+.fx .n{font-family:var(--ser);font-style:italic;color:var(--acc);font-size:1.5rem}
+.fx b{font-size:clamp(1.6rem,4.4vw,3.8rem);font-weight:500;letter-spacing:-.04em;line-height:1}
+.fx p{grid-column:2;color:var(--mut);max-width:40em}
+.proof{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);margin-top:clamp(36px,6vh,70px);align-items:start}
+.big{font-size:clamp(5rem,16vw,13rem);line-height:.85;letter-spacing:-.06em;font-weight:500;color:var(--acc)}
+.proof dl{display:grid;gap:0}
+.proof dt{font-weight:500;font-size:1.15rem;padding-top:20px;border-top:1px solid var(--line)}
+.proof dd{color:var(--mut);padding:4px 0 20px}
+@media(max-width:860px){.proof{grid-template-columns:1fr}}
+/* contact */
+.end{text-align:left;padding-block:clamp(80px,16vh,200px)}
+.end h2{font-size:clamp(2.6rem,9vw,8rem);max-width:none;margin-bottom:34px}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+footer{border-top:1px solid var(--line);padding-block:22px 34px;color:var(--mut);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* reveal */
+.js [data-r]{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.js [data-r].in{opacity:1;transform:none}
+.glow{position:fixed;left:0;top:0;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--acc) 16%,transparent),transparent 65%);pointer-events:none;z-index:1;opacity:0;transition:opacity .4s}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.js h1 .ln>span,.js [data-r]{transform:none!important;opacity:1!important}}
+</style>
+</head>
+<body>
+<nav aria-label="Primary">
+  <a class="b" href="#top">FIOZUR RAHMAN<span class="acc">.</span></a>
+  <ul><li><a href="#work">Work</a></li><li><a href="#focus">Focus</a></li><li><a href="#proof">Contributions</a></li><li><a href="#contact">Contact</a></li></ul>
+  <div class="tools"><button class="t" id="th" type="button" aria-label="Toggle light and dark theme">∅</button></div>
+</nav>
+<div class="glow" id="glow" aria-hidden="true"></div>
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <p class="eye">North-east India</p>
+    <h1><span class="ln"><span>Building AI agents.</span></span><span class="ln"><span><em class="ser acc">Locking down</em></span></span><span class="ln"><span>everything else.</span></span></h1>
+  </div>
+  <figure class="ph" id="ph">
+  <img src="portrait.jpg" alt="Portrait of Fiozur Rahman" width="800" height="1000">
+  <figcaption><span>Portrait</span><span>@fiozxr</span></figcaption>
+</figure>
+      <p class="sub">I’m a developer working across AI engineering and cybersecurity — RAG systems, Android coding agents, encryption tools and clean, self-hosted software.</p>
+</div>
+  <section id="focus" class="wrap">
+  <p class="lab" data-r>Development focus</p>
+  <h2 data-r>Four things I keep <em class="ser acc">coming back</em> to.</h2>
+  <ul class="fx">
+    <li data-r><span class="n">i.</span><b>AI Engineering</b><p>Agent environments, RAG systems, LLM inference and coding agents on Android.</p></li>
+    <li data-r><span class="n">ii.</span><b>Cybersecurity &amp; Privacy</b><p>Encryption tools, zero-knowledge apps and security hardening.</p></li>
+    <li data-r><span class="n">iii.</span><b>Developer Tooling</b><p>SQL environments, networking tools and automation.</p></li>
+    <li data-r><span class="n">iv.</span><b>Product &amp; Design</b><p>Clean interfaces, self-hosted tools and responsive web apps.</p></li>
+  </ul>
+</section>
+
+<section id="proof" class="wrap">
+  <p class="lab" data-r>Notable contributions</p>
+  <h2 data-r>Shipping the <em class="ser acc">unglamorous</em> improvements.</h2>
+  <div class="proof">
+    <div data-r><div class="big">~44%</div><p style="color:var(--mut)">improvement in async file processing in Documentations.</p></div>
+    <dl data-r>
+      <dt>YourSQL</dt><dd>SQL export optimization, identifier quoting, WebView security hardening, Playwright tests and Cordova packaging.</dd>
+      <dt>Nyay AI</dt><dd>A RAG-based digital lawyer.</dd>
+      <dt>Open pull requests</dt><dd>Several pending on YourSQL and Documentations.</dd>
+    </dl>
+  </div>
+</section>
+    <div class="cta"><a class="btn p" href="#work">See the work ↓</a></div>
+  <br>
+  <br>
+<div class="mq" aria-hidden="true"><div id="m1"><span>AI agents</span><i>✦</i><span class="o">RAG</span><i>✦</i><span>Encryption</span><i>✦</i><span class="o">Android</span><i>✦</i><span>Zero-knowledge</span><i>✦</i><span class="o">SQLite</span><i>✦</i><span>AI agents</span><i>✦</i><span class="o">RAG</span><i>✦</i><span>Encryption</span><i>✦</i><span class="o">Android</span><i>✦</i><span>Zero-knowledge</span><i>✦</i><span class="o">SQLite</span><i>✦</i></div></div>
+
+<section id="work" class="wrap">
+  <p class="lab" data-r>Selected work</p>
+  <h2 data-r>Agents, ciphers and <em class="ser acc">tools</em> that get out of the way.</h2>
+
+  <article class="cat" data-r>
+    <header><span class="n">01</span><h3>AI &amp; Agent Development</h3><p>A RAG-based digital lawyer, and a family of coding agents running on Android.</p></header>
+    <ul>
+      <li><a href="https://github.com/fiozxr/nyay" rel="noopener"><b>nyay</b><span>RAG-based digital lawyer.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/ai-coding-agents-android" rel="noopener"><b>ai-coding-agents-android</b><span>Run AI agents on Android for free, with a step-by-step installation guide.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/claude-agent-android" rel="noopener"><b>claude-agent-android</b><span>Android agent setup.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/codex-agent-android" rel="noopener"><b>codex-agent-android</b><span>Android agent setup.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/opencode-agent-android" rel="noopener"><b>opencode-agent-android</b><span>Android agent setup.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/antigravity-agent-android" rel="noopener"><b>antigravity-agent-android</b><span>Android agent setup.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/pi-agent-android" rel="noopener"><b>pi-agent-android</b><span>Android agent setup.</span><i>↗</i></a></li>
+    </ul>
+  </article>
+
+  <article class="cat" data-r>
+    <header><span class="n">02</span><h3>Security &amp; Privacy</h3><p>Encryption you can run from a terminal, a vault the server can’t read, and a networking toolkit for Android.</p></header>
+    <ul>
+      <li><a href="https://github.com/fiozxr/CryXR" rel="noopener"><b>CryXR</b><span>Linux security utility. Layered AES + Camellia encryption, PBKDF2, command-line.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/txtvault" rel="noopener"><b>txtvault</b><span>Client-side encrypted text vault. AES-256, zero-knowledge, Firebase, Markdown.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/PocketRouter" rel="noopener"><b>PocketRouter</b><span>Android networking toolkit in Kotlin + Jetpack Compose: diagnostics, TCP reachability, DNS-SD discovery, Shizuku integration.</span><i>↗</i></a></li>
+    </ul>
+  </article>
+
+  <article class="cat" data-r>
+    <header><span class="n">03</span><h3>Developer Tools &amp; Apps</h3><p>Small, sharp tools for working with data and the command line.</p></header>
+    <ul>
+      <li><a href="https://github.com/fiozxr/YourSQL" rel="noopener"><b>YourSQL</b><span>Browser-based SQLite IDE. Offline, import/export, database explorer, Android compatible.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/rea" rel="noopener"><b>rea</b><span>Developer utility.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/bambo-mc" rel="noopener"><b>bambo-mc</b><span>Developer utility.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/StreamyLAN" rel="noopener"><b>StreamyLAN<span class="tag">archived</span></b><span>Archived project.</span><i>↗</i></a></li>
+      <li><a href="https://github.com/fiozxr/trainy-tui" rel="noopener"><b>trainy-tui<span class="tag">archived</span></b><span>Archived project.</span><i>↗</i></a></li>
+    </ul>
+  </article>
+
+  <article class="cat" data-r>
+    <header><span class="n">04</span><h3>Websites &amp; Other</h3><p>Sites, docs and experiments.</p></header>
+    <div class="more">
+      <a href="https://github.com/fiozxr/fiozxr.github.io" rel="noopener">fiozxr.github.io</a>
+      <a href="https://github.com/fiozxr/Documentations" rel="noopener">Documentations</a>
+      <a href="https://github.com/fiozxr/monochrome" rel="noopener">monochrome — open-source music app</a>
+      <a href="https://github.com/fiozxr/FreeDomains" rel="noopener">FreeDomains</a>
+      <a href="https://github.com/fiozxr/nayna-website" rel="noopener">nayna-website</a>
+      <a href="https://github.com/fiozxr/arjuonlineservice.github.io" rel="noopener">arjuonlineservice website</a>
+      <a href="https://github.com/fiozxr/register" rel="noopener">register</a>
+      <a href="https://github.com/fiozxr/pentestcode" rel="noopener">pentestcode (fork)</a>
+      <a href="https://github.com/fiozxr/Petale-Tige" rel="noopener">Petale-Tige</a>
+      <a href="https://github.com/fiozxr/fiozxr" rel="noopener">Profile README</a>
+    </div>
+  </article>
+</section>
+
+<section id="contact" class="wrap end">
+  <p class="lab" data-r>Contact</p>
+  <h2 data-r>Let’s build something <em class="ser acc">secure.</em></h2>
+  <div class="links" data-r>
+    <a class="btn p" href="https://github.com/fiozxr" rel="noopener">Follow @fiozxr on GitHub ↗</a>
+    <a class="btn" href="https://instagram.com/fiozxr_" rel="noopener">Instagram @fiozxr_ ↗</a>
+  </div>
+</section>
+</main>
+<footer class="wrap"><span>© 2026 Fiozur Rahman</span><span>stand by me.</span></footer>
+
+<script>
+(function(){
+var d=document.documentElement,rm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+d.classList.add("js");
+try{var s=localStorage.getItem("fr-theme");if(s)d.setAttribute("data-theme",s)}catch(e){}
+document.getElementById("th").addEventListener("click",function(){
+  var dark=d.getAttribute("data-theme")?d.getAttribute("data-theme")==="dark":matchMedia("(prefers-color-scheme: dark)").matches;
+  var n=dark?"light":"dark";d.setAttribute("data-theme",n);try{localStorage.setItem("fr-theme",n)}catch(e){}
+});
+requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add("ready")})});
+var els=document.querySelectorAll("[data-r]");
+if("IntersectionObserver" in window&&!rm){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+  els.forEach(function(e){io.observe(e)});
+}else{els.forEach(function(e){e.classList.add("in")})}
+if(rm)return;
+/* scroll-linked marquee with velocity skew */
+var m=document.getElementById("m1"),last=scrollY,skew=0;
+function tick(){
+  var y=scrollY,v=y-last;last=y;
+  skew+=((Math.max(-12,Math.min(12,v))*-.5)-skew)*.12;
+  var half=m.scrollWidth/2,x=(y*.55)%half;
+  m.style.transform="translate3d("+(-x)+"px,0,0) skewX("+skew.toFixed(2)+"deg)";
+  requestAnimationFrame(tick);
+}
+if(!document.hidden)requestAnimationFrame(tick);
+document.addEventListener("visibilitychange",function(){if(!document.hidden){last=scrollY;requestAnimationFrame(tick)}});
+/* desktop-only: cursor glow + portrait tilt */
+if(matchMedia("(hover: hover) and (pointer: fine)").matches){
+  var g=document.getElementById("glow"),ph=document.getElementById("ph");
+  addEventListener("pointermove",function(e){g.style.opacity=1;g.style.transform="translate3d("+e.clientX+"px,"+e.clientY+"px,0)"});
+  ph.addEventListener("pointermove",function(e){var r=ph.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;ph.style.transform="perspective(900px) rotateY("+(x*8)+"deg) rotateX("+(-y*8)+"deg)"});
+  ph.addEventListener("pointerleave",function(){ph.style.transform=""});
+}
+})();
+</script>
+</body>
+</html>
